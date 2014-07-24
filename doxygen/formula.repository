@@ -1,0 +1,44 @@
+\form#0:$ (x_i, y_i) $
+\form#1:$ f(x) = \frac{2}{1 + exp(-x)}-1$
+\form#2:$f(x) = \frac{1}{1.0 + exp(-x)}$
+\form#3:$ f(x,y) = (1 - x)^2 + 100 ( y - x^2)^2 $
+\form#4:$ \frac{dx}{dt} = \sigma ( y - x ) $
+\form#5:$ \frac{dy}{dt} = x (\rho - z) - y $
+\form#6:$ \frac{dz}{dt} = xy - \beta z $
+\form#7:$ (\sigma, \rho, \beta)$
+\form#8:$ (t_i, {x(t_i), y(t_i), z(t_i)})$
+\form#9:$\textbf{P}_{\theta\theta_i} = \alpha . \textbf{I}$
+\form#10:$\textbf{P}_{\theta\theta_i} = (\alpha^{-1} - 1)\textbf{P}_i$
+\form#11:$\kappa \geq 0$
+\form#12:$\kappa = 0$
+\form#13:$0 \leq \alpha \leq 1$
+\form#14:$\beta = 2$
+\form#15:$\lambda = \alpha^2 (n + \kappa) - n$
+\form#16:$\gamma = \sqrt{\lambda + n}$
+\form#17:$nbSamples = (2 n + 1)$
+\form#18:$n$
+\form#19:$(n,1)$
+\form#20:$(1,n)$
+\form#21:$(w, d)$
+\form#22:$P_{w_k d_k}$
+\form#23:$(n,n)$
+\form#24:$P_k$
+\form#25:$wm_0 = \frac{\lambda}{n + \lambda}$
+\form#26:$wm_i = \frac{1}{2(n + \lambda)}$
+\form#27:$wc_0 = \frac{\lambda}{n + \lambda} + (1 - \alpha^2 + \beta)$
+\form#28:$wc_i = \frac{1}{2(n + \lambda)}$
+\form#29:$nbSamples$
+\form#30:$(n,nbSamples)$
+\form#31:$n \times no$
+\form#32:$no \times n$
+\form#33:$ no \times no $
+\form#34:$ n \times n $
+\form#35:$ no \times nbSamples$
+\form#36:$ no $
+\form#37:$ n $
+\form#38:$ n \times 1 $
+\form#39:$ n \times no $
+\form#40:$ no \times n $
+\form#41:$ 1 \times no $
+\form#42:$ no \times 1 $
+\form#43:$nbSamplesMeasure = (4 n + 1)$
