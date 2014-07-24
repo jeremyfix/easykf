@@ -1,0 +1,3 @@
+set terminal postscript color
+set output "Output/example-003.ps"
+plot 'Output/example-003.data' using 1:2 with lines title "Clean data", 'Output/example-003.data' using 1:3 with lines title "RBF Output",'Output/example-003.data' using 1:4 title "Noisy"

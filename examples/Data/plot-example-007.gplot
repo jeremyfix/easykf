@@ -1,0 +1,6 @@
+set terminal postscript color
+set output "Output/example-007-rms.ps"
+plot "Output/example-007-rms.data" with lines
+
+set output "Output/example-007-Lorentz.ps"
+splot "Output/example-007.data" using 2:3:4 with lines title "Clean state", "Output/example-007.data" using 11:12:13 with lines title "Estimated state", "Output/example-007.data" using 8:9:10 title "Noisy observations"
