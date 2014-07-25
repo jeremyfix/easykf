@@ -1,0 +1,380 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="structukf_1_1parameter_1_1ukf__state" kind="struct" prot="public">
+    <compoundname>ukf::parameter::ukf_state</compoundname>
+    <includes refid="ukf__types_8h" local="no">ukf_types.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structukf_1_1parameter_1_1ukf__state_1a98ac53f44b5741a055a1fb489e141340" prot="public" static="no" mutable="no">
+        <type>gsl_matrix *</type>
+        <definition>gsl_matrix* ukf::parameter::ukf_state::Kk</definition>
+        <argsstring></argsstring>
+        <name>Kk</name>
+        <briefdescription>
+<para>Kalman gain, a matrix of size <formula id="31">$n \times no$</formula>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="254" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="254" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1parameter_1_1ukf__state_1a37add3babc9f20fe09b62e93a854ff46" prot="public" static="no" mutable="no">
+        <type>gsl_matrix *</type>
+        <definition>gsl_matrix* ukf::parameter::ukf_state::Kk_T</definition>
+        <argsstring></argsstring>
+        <name>Kk_T</name>
+        <briefdescription>
+<para>The tranposed Kalman gain, a vector of size <formula id="32">$no \times n$</formula>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="259" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="259" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1parameter_1_1ukf__state_1a7dd701d6a9f5e5a7bcf15822ddbe633d" prot="public" static="no" mutable="no">
+        <type>gsl_matrix *</type>
+        <definition>gsl_matrix* ukf::parameter::ukf_state::Pwdk</definition>
+        <argsstring></argsstring>
+        <name>Pwdk</name>
+        <briefdescription>
+<para>Covariance of <formula id="21">$(w, d)$</formula>: <formula id="22">$P_{w_k d_k}$</formula>, of size <formula id="31">$n \times no$</formula>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="264" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="264" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1parameter_1_1ukf__state_1a90bcfea6b544baf8f4b61b03cbb47e06" prot="public" static="no" mutable="no">
+        <type>gsl_matrix *</type>
+        <definition>gsl_matrix* ukf::parameter::ukf_state::Pddk</definition>
+        <argsstring></argsstring>
+        <name>Pddk</name>
+        <briefdescription>
+<para>Covariance of the output, a matrix of size <formula id="33">$ no \times no $</formula>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="269" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="269" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1parameter_1_1ukf__state_1aaf733b81f5d34fa210d514c2fe0d321a" prot="public" static="no" mutable="no">
+        <type>gsl_matrix *</type>
+        <definition>gsl_matrix* ukf::parameter::ukf_state::Peek</definition>
+        <argsstring></argsstring>
+        <name>Peek</name>
+        <briefdescription>
+<para>Covariance of the observation noise, of size <formula id="33">$ no \times no $</formula>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="274" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="274" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1parameter_1_1ukf__state_1a1cabc1bed1eaadbab395a10c0dba6072" prot="public" static="no" mutable="no">
+        <type>gsl_matrix *</type>
+        <definition>gsl_matrix* ukf::parameter::ukf_state::Prrk</definition>
+        <argsstring></argsstring>
+        <name>Prrk</name>
+        <briefdescription>
+<para>Covariance of the evolution noise, of size <formula id="34">$ n \times n $</formula>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="279" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="279" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1parameter_1_1ukf__state_1aff3014ff4ffec72ecff69f533540e88a" prot="public" static="no" mutable="no">
+        <type>gsl_vector *</type>
+        <definition>gsl_vector* ukf::parameter::ukf_state::w</definition>
+        <argsstring></argsstring>
+        <name>w</name>
+        <briefdescription>
+<para>Parameter vector, of size <formula id="18">$n$</formula>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="284" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="284" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1parameter_1_1ukf__state_1aec9c1db99ea8bb204d06a3e506f4d3b0" prot="public" static="no" mutable="no">
+        <type>gsl_vector *</type>
+        <definition>gsl_vector* ukf::parameter::ukf_state::wk</definition>
+        <argsstring></argsstring>
+        <name>wk</name>
+        <briefdescription>
+<para>Temporary vector holding one sigma point, of size <formula id="18">$n$</formula>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="289" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="289" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1parameter_1_1ukf__state_1a03fdbac49bc406308eb9ccfbbd104205" prot="public" static="no" mutable="no">
+        <type>gsl_matrix *</type>
+        <definition>gsl_matrix* ukf::parameter::ukf_state::Pk</definition>
+        <argsstring></argsstring>
+        <name>Pk</name>
+        <briefdescription>
+<para>Covariance matrix of the parameters, of size <formula id="23">$(n,n)$</formula>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="294" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="294" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1parameter_1_1ukf__state_1a9d6708942b03aec45c04b2dd83ca2db2" prot="public" static="no" mutable="no">
+        <type>gsl_matrix *</type>
+        <definition>gsl_matrix* ukf::parameter::ukf_state::Sk</definition>
+        <argsstring></argsstring>
+        <name>Sk</name>
+        <briefdescription>
+<para>Matrix holding the Cholesky decomposition of <formula id="24">$P_k$</formula>, of size <formula id="23">$(n,n)$</formula>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="299" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="299" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1parameter_1_1ukf__state_1a97cdef926065762a0e461fb815f6f855" prot="public" static="no" mutable="no">
+        <type>gsl_vector *</type>
+        <definition>gsl_vector* ukf::parameter::ukf_state::cSk</definition>
+        <argsstring></argsstring>
+        <name>cSk</name>
+        <briefdescription>
+<para>Vector holding one column of Sk, of size <formula id="18">$n$</formula>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="304" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="304" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1parameter_1_1ukf__state_1a9216214d4e9b7adb16104188dfea519e" prot="public" static="no" mutable="no">
+        <type>gsl_vector *</type>
+        <definition>gsl_vector* ukf::parameter::ukf_state::wm</definition>
+        <argsstring></argsstring>
+        <name>wm</name>
+        <briefdescription>
+<para>Weights used to compute the mean of the sigma points&apos; images. </para>        </briefdescription>
+        <detaileddescription>
+<para><formula id="25">$wm_0 = \frac{\lambda}{n + \lambda}$</formula> <formula id="26">$wm_i = \frac{1}{2(n + \lambda)}$</formula> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="311" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="311" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1parameter_1_1ukf__state_1aab996e4b1589b6f69eac3158eb0a6ed7" prot="public" static="no" mutable="no">
+        <type>gsl_vector *</type>
+        <definition>gsl_vector* ukf::parameter::ukf_state::wc</definition>
+        <argsstring></argsstring>
+        <name>wc</name>
+        <briefdescription>
+<para>Weights used to update the covariance matrices. </para>        </briefdescription>
+        <detaileddescription>
+<para><formula id="27">$wc_0 = \frac{\lambda}{n + \lambda} + (1 - \alpha^2 + \beta)$</formula> <formula id="28">$wc_i = \frac{1}{2(n + \lambda)}$</formula> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="318" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="318" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1parameter_1_1ukf__state_1afbea39cf7668445558d213452364d355" prot="public" static="no" mutable="no">
+        <type>gsl_matrix *</type>
+        <definition>gsl_matrix* ukf::parameter::ukf_state::dk</definition>
+        <argsstring></argsstring>
+        <name>dk</name>
+        <briefdescription>
+<para>Temporary matrix holding the image of the sigma points, of size <formula id="35">$ no \times nbSamples$</formula>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="323" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="323" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1parameter_1_1ukf__state_1a15aa1109521e57641b35e29fba5cb2c7" prot="public" static="no" mutable="no">
+        <type>gsl_vector *</type>
+        <definition>gsl_vector* ukf::parameter::ukf_state::d_mean</definition>
+        <argsstring></argsstring>
+        <name>d_mean</name>
+        <briefdescription>
+<para>Vector holding the mean of the sigma points image, of size <formula id="36">$ no $</formula>ŝ </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="328" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="328" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1parameter_1_1ukf__state_1a6070bcca85799e03f1015e4e4416bf4e" prot="public" static="no" mutable="no">
+        <type>gsl_vector *</type>
+        <definition>gsl_vector* ukf::parameter::ukf_state::ino_dk</definition>
+        <argsstring></argsstring>
+        <name>ino_dk</name>
+        <briefdescription>
+<para>Vector holding the inovation, of size <formula id="36">$ no $</formula>ŝ </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="333" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="333" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1parameter_1_1ukf__state_1a3f121cb6700b18806b1174d0245217ad" prot="public" static="no" mutable="no">
+        <type>gsl_matrix *</type>
+        <definition>gsl_matrix* ukf::parameter::ukf_state::sigmaPoints</definition>
+        <argsstring></argsstring>
+        <name>sigmaPoints</name>
+        <briefdescription>
+<para>Matrix holding the sigma points in the columns, of size <formula id="30">$(n,nbSamples)$</formula>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="338" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="338" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1parameter_1_1ukf__state_1ad608b7d6bb36e44feb556b9bfb3e8171" prot="public" static="no" mutable="no">
+        <type>gsl_vector *</type>
+        <definition>gsl_vector* ukf::parameter::ukf_state::vec_temp_n</definition>
+        <argsstring></argsstring>
+        <name>vec_temp_n</name>
+        <briefdescription>
+<para>Temporary vector of size <formula id="37">$ n $</formula>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="343" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="343" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1parameter_1_1ukf__state_1ac392ca5e3e847688c58bea5692f36bf8" prot="public" static="no" mutable="no">
+        <type>gsl_vector *</type>
+        <definition>gsl_vector* ukf::parameter::ukf_state::vec_temp_output</definition>
+        <argsstring></argsstring>
+        <name>vec_temp_output</name>
+        <briefdescription>
+<para>Temporary vector of size <formula id="36">$ no $</formula>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="348" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="348" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1parameter_1_1ukf__state_1a6df918d0806e077630b0e1fcecc66b49" prot="public" static="no" mutable="no">
+        <type>gsl_matrix *</type>
+        <definition>gsl_matrix* ukf::parameter::ukf_state::mat_temp_n_1</definition>
+        <argsstring></argsstring>
+        <name>mat_temp_n_1</name>
+        <briefdescription>
+<para>Temporary matrix of size <formula id="38">$ n \times 1 $</formula>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="353" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="353" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1parameter_1_1ukf__state_1a96808c42875c1b6c92f2214d6ce33e56" prot="public" static="no" mutable="no">
+        <type>gsl_matrix *</type>
+        <definition>gsl_matrix* ukf::parameter::ukf_state::mat_temp_n_output</definition>
+        <argsstring></argsstring>
+        <name>mat_temp_n_output</name>
+        <briefdescription>
+<para>Temporary matrix of size <formula id="39">$ n \times no $</formula>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="358" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="358" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1parameter_1_1ukf__state_1a67c22cfb376227075a089c8e93dc4e5e" prot="public" static="no" mutable="no">
+        <type>gsl_matrix *</type>
+        <definition>gsl_matrix* ukf::parameter::ukf_state::mat_temp_output_n</definition>
+        <argsstring></argsstring>
+        <name>mat_temp_output_n</name>
+        <briefdescription>
+<para>Temporary matrix of size <formula id="40">$ no \times n $</formula>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="363" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="363" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1parameter_1_1ukf__state_1a445af0a738d5d099a7613e0deaec0c61" prot="public" static="no" mutable="no">
+        <type>gsl_matrix *</type>
+        <definition>gsl_matrix* ukf::parameter::ukf_state::mat_temp_1_output</definition>
+        <argsstring></argsstring>
+        <name>mat_temp_1_output</name>
+        <briefdescription>
+<para>Temporary matrix of size <formula id="41">$ 1 \times no $</formula>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="368" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="368" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1parameter_1_1ukf__state_1aa4c34456f9e170a8ccd40bfd666bb9c8" prot="public" static="no" mutable="no">
+        <type>gsl_matrix *</type>
+        <definition>gsl_matrix* ukf::parameter::ukf_state::mat_temp_output_1</definition>
+        <argsstring></argsstring>
+        <name>mat_temp_output_1</name>
+        <briefdescription>
+<para>Temporary matrix of size <formula id="42">$ no \times 1 $</formula>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="373" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="373" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1parameter_1_1ukf__state_1a07386aed2dc626d883add4a2bda98de2" prot="public" static="no" mutable="no">
+        <type>gsl_matrix *</type>
+        <definition>gsl_matrix* ukf::parameter::ukf_state::mat_temp_output_output</definition>
+        <argsstring></argsstring>
+        <name>mat_temp_output_output</name>
+        <briefdescription>
+<para>Temporary matrix of size <formula id="33">$ no \times no $</formula>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="378" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="378" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1parameter_1_1ukf__state_1a11d6ee5527f1cdab2869ae23374b8b9a" prot="public" static="no" mutable="no">
+        <type>gsl_matrix *</type>
+        <definition>gsl_matrix* ukf::parameter::ukf_state::mat_temp_n_n</definition>
+        <argsstring></argsstring>
+        <name>mat_temp_n_n</name>
+        <briefdescription>
+<para>Temporary matrix of size <formula id="34">$ n \times n $</formula>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="383" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="383" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Structure holding the matrices manipulated by the unscented kalman filter in the vectorial case, for Parameter estimation. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="250" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="249" bodyend="384"/>
+    <listofallmembers>
+      <member refid="structukf_1_1parameter_1_1ukf__state_1a97cdef926065762a0e461fb815f6f855" prot="public" virt="non-virtual"><scope>ukf::parameter::ukf_state</scope><name>cSk</name></member>
+      <member refid="structukf_1_1parameter_1_1ukf__state_1a15aa1109521e57641b35e29fba5cb2c7" prot="public" virt="non-virtual"><scope>ukf::parameter::ukf_state</scope><name>d_mean</name></member>
+      <member refid="structukf_1_1parameter_1_1ukf__state_1afbea39cf7668445558d213452364d355" prot="public" virt="non-virtual"><scope>ukf::parameter::ukf_state</scope><name>dk</name></member>
+      <member refid="structukf_1_1parameter_1_1ukf__state_1a6070bcca85799e03f1015e4e4416bf4e" prot="public" virt="non-virtual"><scope>ukf::parameter::ukf_state</scope><name>ino_dk</name></member>
+      <member refid="structukf_1_1parameter_1_1ukf__state_1a98ac53f44b5741a055a1fb489e141340" prot="public" virt="non-virtual"><scope>ukf::parameter::ukf_state</scope><name>Kk</name></member>
+      <member refid="structukf_1_1parameter_1_1ukf__state_1a37add3babc9f20fe09b62e93a854ff46" prot="public" virt="non-virtual"><scope>ukf::parameter::ukf_state</scope><name>Kk_T</name></member>
+      <member refid="structukf_1_1parameter_1_1ukf__state_1a445af0a738d5d099a7613e0deaec0c61" prot="public" virt="non-virtual"><scope>ukf::parameter::ukf_state</scope><name>mat_temp_1_output</name></member>
+      <member refid="structukf_1_1parameter_1_1ukf__state_1a6df918d0806e077630b0e1fcecc66b49" prot="public" virt="non-virtual"><scope>ukf::parameter::ukf_state</scope><name>mat_temp_n_1</name></member>
+      <member refid="structukf_1_1parameter_1_1ukf__state_1a11d6ee5527f1cdab2869ae23374b8b9a" prot="public" virt="non-virtual"><scope>ukf::parameter::ukf_state</scope><name>mat_temp_n_n</name></member>
+      <member refid="structukf_1_1parameter_1_1ukf__state_1a96808c42875c1b6c92f2214d6ce33e56" prot="public" virt="non-virtual"><scope>ukf::parameter::ukf_state</scope><name>mat_temp_n_output</name></member>
+      <member refid="structukf_1_1parameter_1_1ukf__state_1aa4c34456f9e170a8ccd40bfd666bb9c8" prot="public" virt="non-virtual"><scope>ukf::parameter::ukf_state</scope><name>mat_temp_output_1</name></member>
+      <member refid="structukf_1_1parameter_1_1ukf__state_1a67c22cfb376227075a089c8e93dc4e5e" prot="public" virt="non-virtual"><scope>ukf::parameter::ukf_state</scope><name>mat_temp_output_n</name></member>
+      <member refid="structukf_1_1parameter_1_1ukf__state_1a07386aed2dc626d883add4a2bda98de2" prot="public" virt="non-virtual"><scope>ukf::parameter::ukf_state</scope><name>mat_temp_output_output</name></member>
+      <member refid="structukf_1_1parameter_1_1ukf__state_1a90bcfea6b544baf8f4b61b03cbb47e06" prot="public" virt="non-virtual"><scope>ukf::parameter::ukf_state</scope><name>Pddk</name></member>
+      <member refid="structukf_1_1parameter_1_1ukf__state_1aaf733b81f5d34fa210d514c2fe0d321a" prot="public" virt="non-virtual"><scope>ukf::parameter::ukf_state</scope><name>Peek</name></member>
+      <member refid="structukf_1_1parameter_1_1ukf__state_1a03fdbac49bc406308eb9ccfbbd104205" prot="public" virt="non-virtual"><scope>ukf::parameter::ukf_state</scope><name>Pk</name></member>
+      <member refid="structukf_1_1parameter_1_1ukf__state_1a1cabc1bed1eaadbab395a10c0dba6072" prot="public" virt="non-virtual"><scope>ukf::parameter::ukf_state</scope><name>Prrk</name></member>
+      <member refid="structukf_1_1parameter_1_1ukf__state_1a7dd701d6a9f5e5a7bcf15822ddbe633d" prot="public" virt="non-virtual"><scope>ukf::parameter::ukf_state</scope><name>Pwdk</name></member>
+      <member refid="structukf_1_1parameter_1_1ukf__state_1a3f121cb6700b18806b1174d0245217ad" prot="public" virt="non-virtual"><scope>ukf::parameter::ukf_state</scope><name>sigmaPoints</name></member>
+      <member refid="structukf_1_1parameter_1_1ukf__state_1a9d6708942b03aec45c04b2dd83ca2db2" prot="public" virt="non-virtual"><scope>ukf::parameter::ukf_state</scope><name>Sk</name></member>
+      <member refid="structukf_1_1parameter_1_1ukf__state_1ad608b7d6bb36e44feb556b9bfb3e8171" prot="public" virt="non-virtual"><scope>ukf::parameter::ukf_state</scope><name>vec_temp_n</name></member>
+      <member refid="structukf_1_1parameter_1_1ukf__state_1ac392ca5e3e847688c58bea5692f36bf8" prot="public" virt="non-virtual"><scope>ukf::parameter::ukf_state</scope><name>vec_temp_output</name></member>
+      <member refid="structukf_1_1parameter_1_1ukf__state_1aff3014ff4ffec72ecff69f533540e88a" prot="public" virt="non-virtual"><scope>ukf::parameter::ukf_state</scope><name>w</name></member>
+      <member refid="structukf_1_1parameter_1_1ukf__state_1aab996e4b1589b6f69eac3158eb0a6ed7" prot="public" virt="non-virtual"><scope>ukf::parameter::ukf_state</scope><name>wc</name></member>
+      <member refid="structukf_1_1parameter_1_1ukf__state_1aec9c1db99ea8bb204d06a3e506f4d3b0" prot="public" virt="non-virtual"><scope>ukf::parameter::ukf_state</scope><name>wk</name></member>
+      <member refid="structukf_1_1parameter_1_1ukf__state_1a9216214d4e9b7adb16104188dfea519e" prot="public" virt="non-virtual"><scope>ukf::parameter::ukf_state</scope><name>wm</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="namespaceukf_1_1srstate" kind="namespace">
+    <compoundname>ukf::srstate</compoundname>
+    <innerclass refid="structukf_1_1srstate_1_1ukf__param" prot="public">ukf::srstate::ukf_param</innerclass>
+    <innerclass refid="structukf_1_1srstate_1_1ukf__state" prot="public">ukf::srstate::ukf_state</innerclass>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceukf_1_1srstate_1aff3bcb491d70b295c47a7644038e7ed2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ukf::srstate::ukf_init</definition>
+        <argsstring>(ukf_param &amp;p, ukf_state &amp;s)</argsstring>
+        <name>ukf_init</name>
+        <param>
+          <type><ref refid="structukf_1_1srstate_1_1ukf__param" kindref="compound">ukf_param</ref> &amp;</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type><ref refid="structukf_1_1srstate_1_1ukf__state" kindref="compound">ukf_state</ref> &amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+<para>Allocation of the vectors/matrices and initialization. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_sr_state_ndim.h" line="65" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_sr_state_ndim.h" bodystart="65" bodyend="174"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceukf_1_1srstate_1a3a2cccd808cea8666029bcbfc44ba460" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ukf::srstate::ukf_free</definition>
+        <argsstring>(ukf_param &amp;p, ukf_state &amp;s)</argsstring>
+        <name>ukf_free</name>
+        <param>
+          <type><ref refid="structukf_1_1srstate_1_1ukf__param" kindref="compound">ukf_param</ref> &amp;</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type><ref refid="structukf_1_1srstate_1_1ukf__state" kindref="compound">ukf_state</ref> &amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+<para>Free of memory allocation. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_sr_state_ndim.h" line="180" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_sr_state_ndim.h" bodystart="180" bodyend="227"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceukf_1_1srstate_1ada14e67760dda9e7a06a957a0a52a983" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename FunctProcess</type>
+          </param>
+          <param>
+            <type>typename FunctObservation</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void ukf::srstate::ukf_iterate</definition>
+        <argsstring>(ukf_param &amp;p, ukf_state &amp;s, FunctProcess f, FunctObservation h, gsl_vector *yi)</argsstring>
+        <name>ukf_iterate</name>
+        <param>
+          <type><ref refid="structukf_1_1srstate_1_1ukf__param" kindref="compound">ukf_param</ref> &amp;</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type><ref refid="structukf_1_1srstate_1_1ukf__state" kindref="compound">ukf_state</ref> &amp;</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>FunctProcess</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>FunctObservation</type>
+          <declname>h</declname>
+        </param>
+        <param>
+          <type>gsl_vector *</type>
+          <declname>yi</declname>
+        </param>
+        <briefdescription>
+<para>UKF-additive (zero-mean) noise case, &quot;Kalman Filtering and Neural Networks&quot;, p.233. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_sr_state_ndim.h" line="234" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_sr_state_ndim.h" bodystart="234" bodyend="498"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceukf_1_1srstate_1a22c2755916c2483faa7049811ce6bc8a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename FunctProcess</type>
+          </param>
+          <param>
+            <type>typename FunctObservation</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void ukf::srstate::ukf_evaluate</definition>
+        <argsstring>(ukf_param &amp;p, ukf_state &amp;s, FunctProcess f, FunctObservation h, gsl_vector *yi)</argsstring>
+        <name>ukf_evaluate</name>
+        <param>
+          <type><ref refid="structukf_1_1srstate_1_1ukf__param" kindref="compound">ukf_param</ref> &amp;</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type><ref refid="structukf_1_1srstate_1_1ukf__state" kindref="compound">ukf_state</ref> &amp;</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>FunctProcess</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>FunctObservation</type>
+          <declname>h</declname>
+        </param>
+        <param>
+          <type>gsl_vector *</type>
+          <declname>yi</declname>
+        </param>
+        <briefdescription>
+<para>Evaluation of the output from the sigma points. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_sr_state_ndim.h" line="505" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_sr_state_ndim.h" bodystart="505" bodyend="592"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>MUST NOT BE USED !!!!!!! Square root UKF for state estimation, additive noise case The notations follow &quot;Sigma-Point Kalman Filters for Probabilistic Inference in Dynamic State-Space Models&quot;,p115, PhD, van Der Merwe. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/fix_jer/GIT/easykf/src/ukf_sr_state_ndim.h" line="60" column="1"/>
+  </compounddef>
+</doxygen>

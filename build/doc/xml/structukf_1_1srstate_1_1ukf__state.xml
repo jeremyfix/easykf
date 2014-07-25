@@ -1,0 +1,492 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="structukf_1_1srstate_1_1ukf__state" kind="struct" prot="public">
+    <compoundname>ukf::srstate::ukf_state</compoundname>
+    <includes refid="ukf__types_8h" local="no">ukf_types.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structukf_1_1srstate_1_1ukf__state_1a923a0facfe402f098a4da50e8f184f61" prot="public" static="no" mutable="no">
+        <type>gsl_vector *</type>
+        <definition>gsl_vector* ukf::srstate::ukf_state::params</definition>
+        <argsstring></argsstring>
+        <name>params</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="827" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="827" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1srstate_1_1ukf__state_1a9095ffca4f0bc5cbf7a42368cf7463d6" prot="public" static="no" mutable="no">
+        <type>gsl_vector *</type>
+        <definition>gsl_vector* ukf::srstate::ukf_state::xi</definition>
+        <argsstring></argsstring>
+        <name>xi</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="829" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="829" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1srstate_1_1ukf__state_1a0876b435bf2ca99901c779bde40d9004" prot="public" static="no" mutable="no">
+        <type>gsl_matrix *</type>
+        <definition>gsl_matrix* ukf::srstate::ukf_state::xi_prediction</definition>
+        <argsstring></argsstring>
+        <name>xi_prediction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="830" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="830" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1srstate_1_1ukf__state_1a0ead044a78987bebf3a2df35efdcead3" prot="public" static="no" mutable="no">
+        <type>gsl_vector *</type>
+        <definition>gsl_vector* ukf::srstate::ukf_state::xi_mean</definition>
+        <argsstring></argsstring>
+        <name>xi_mean</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="831" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="831" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1srstate_1_1ukf__state_1aa702fccfc9136bd1d178e03cabf5cee8" prot="public" static="no" mutable="no">
+        <type>gsl_matrix *</type>
+        <definition>gsl_matrix* ukf::srstate::ukf_state::Sxi</definition>
+        <argsstring></argsstring>
+        <name>Sxi</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="832" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="832" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1srstate_1_1ukf__state_1a51c541f3e8ba1379cb5f61876e17c375" prot="public" static="no" mutable="no">
+        <type>gsl_matrix *</type>
+        <definition>gsl_matrix* ukf::srstate::ukf_state::Svi</definition>
+        <argsstring></argsstring>
+        <name>Svi</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="833" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="833" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1srstate_1_1ukf__state_1ac205dee75be43b32c76b0696d0182ab6" prot="public" static="no" mutable="no">
+        <type>gsl_matrix *</type>
+        <definition>gsl_matrix* ukf::srstate::ukf_state::yi_prediction</definition>
+        <argsstring></argsstring>
+        <name>yi_prediction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="835" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="835" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1srstate_1_1ukf__state_1af0b49a1284aa6ce02d8fe249df41d434" prot="public" static="no" mutable="no">
+        <type>gsl_vector *</type>
+        <definition>gsl_vector* ukf::srstate::ukf_state::yi_mean</definition>
+        <argsstring></argsstring>
+        <name>yi_mean</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="836" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="836" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1srstate_1_1ukf__state_1add7a90f3736c8909a2e3abc3e4235ba7" prot="public" static="no" mutable="no">
+        <type>gsl_vector *</type>
+        <definition>gsl_vector* ukf::srstate::ukf_state::ino_yi</definition>
+        <argsstring></argsstring>
+        <name>ino_yi</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="837" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="837" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1srstate_1_1ukf__state_1a70875ec1b32a4a73816c139ebe54d17e" prot="public" static="no" mutable="no">
+        <type>gsl_matrix *</type>
+        <definition>gsl_matrix* ukf::srstate::ukf_state::Syi</definition>
+        <argsstring></argsstring>
+        <name>Syi</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="838" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="838" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1srstate_1_1ukf__state_1afee48e0e83f20d7d46a478a9b436a42b" prot="public" static="no" mutable="no">
+        <type>gsl_matrix *</type>
+        <definition>gsl_matrix* ukf::srstate::ukf_state::Sni</definition>
+        <argsstring></argsstring>
+        <name>Sni</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="839" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="839" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1srstate_1_1ukf__state_1a0d210360e59328e219b5f37751baac35" prot="public" static="no" mutable="no">
+        <type>gsl_matrix *</type>
+        <definition>gsl_matrix* ukf::srstate::ukf_state::Pxyi</definition>
+        <argsstring></argsstring>
+        <name>Pxyi</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="841" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="841" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1srstate_1_1ukf__state_1a698d2cd6e4da73ca0b4831e09f9c4419" prot="public" static="no" mutable="no">
+        <type>gsl_vector *</type>
+        <definition>gsl_vector* ukf::srstate::ukf_state::sigmaPoint</definition>
+        <argsstring></argsstring>
+        <name>sigmaPoint</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="843" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="843" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1srstate_1_1ukf__state_1a458721ed2b8869be17e7589024c6bac3" prot="public" static="no" mutable="no">
+        <type>gsl_matrix *</type>
+        <definition>gsl_matrix* ukf::srstate::ukf_state::sigmaPoints</definition>
+        <argsstring></argsstring>
+        <name>sigmaPoints</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="844" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="844" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1srstate_1_1ukf__state_1afea69f7b0d410986ff5f5ca92d70545e" prot="public" static="no" mutable="no">
+        <type>gsl_vector *</type>
+        <definition>gsl_vector* ukf::srstate::ukf_state::sigmaPointMeasure</definition>
+        <argsstring></argsstring>
+        <name>sigmaPointMeasure</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="846" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="846" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1srstate_1_1ukf__state_1a90056d939d833550de52374098d3e348" prot="public" static="no" mutable="no">
+        <type>gsl_matrix *</type>
+        <definition>gsl_matrix* ukf::srstate::ukf_state::sigmaPointsMeasure</definition>
+        <argsstring></argsstring>
+        <name>sigmaPointsMeasure</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="847" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="847" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1srstate_1_1ukf__state_1a903d42d54de210cc63826a6578d64b3c" prot="public" static="no" mutable="no">
+        <type>gsl_matrix *</type>
+        <definition>gsl_matrix* ukf::srstate::ukf_state::U</definition>
+        <argsstring></argsstring>
+        <name>U</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="849" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="849" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1srstate_1_1ukf__state_1a0ab8c07796764941502c6a06f7d5b4dc" prot="public" static="no" mutable="no">
+        <type>gsl_vector *</type>
+        <definition>gsl_vector* ukf::srstate::ukf_state::wm_j</definition>
+        <argsstring></argsstring>
+        <name>wm_j</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="851" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="851" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1srstate_1_1ukf__state_1ae224406380a3ab3aff38a97a874c08f3" prot="public" static="no" mutable="no">
+        <type>gsl_vector *</type>
+        <definition>gsl_vector* ukf::srstate::ukf_state::wc_j</definition>
+        <argsstring></argsstring>
+        <name>wc_j</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="852" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="852" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1srstate_1_1ukf__state_1ae5bd148e7b9dd43dca85f62058d5013f" prot="public" static="no" mutable="no">
+        <type>gsl_vector *</type>
+        <definition>gsl_vector* ukf::srstate::ukf_state::wm_aug_j</definition>
+        <argsstring></argsstring>
+        <name>wm_aug_j</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="854" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="854" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1srstate_1_1ukf__state_1a5cc587b3f1b1e905242a484df549e4a1" prot="public" static="no" mutable="no">
+        <type>gsl_vector *</type>
+        <definition>gsl_vector* ukf::srstate::ukf_state::wc_aug_j</definition>
+        <argsstring></argsstring>
+        <name>wc_aug_j</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="855" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="855" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1srstate_1_1ukf__state_1a43bbdfbb7c743522ebc18b2e299c7c1e" prot="public" static="no" mutable="no">
+        <type>gsl_matrix *</type>
+        <definition>gsl_matrix* ukf::srstate::ukf_state::Ki</definition>
+        <argsstring></argsstring>
+        <name>Ki</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="857" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="857" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1srstate_1_1ukf__state_1ab11872ef0fce0c3b1c02eb19e6198fb1" prot="public" static="no" mutable="no">
+        <type>gsl_matrix *</type>
+        <definition>gsl_matrix* ukf::srstate::ukf_state::Ki_T</definition>
+        <argsstring></argsstring>
+        <name>Ki_T</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="858" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="858" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1srstate_1_1ukf__state_1a2158f781908727006d11975d94c55ad0" prot="public" static="no" mutable="no">
+        <type>gsl_vector *</type>
+        <definition>gsl_vector* ukf::srstate::ukf_state::temp_n</definition>
+        <argsstring></argsstring>
+        <name>temp_n</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="860" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="860" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1srstate_1_1ukf__state_1a64e81fa0a22add1316bd66d03e70f105" prot="public" static="no" mutable="no">
+        <type>gsl_vector *</type>
+        <definition>gsl_vector* ukf::srstate::ukf_state::temp_no</definition>
+        <argsstring></argsstring>
+        <name>temp_no</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="861" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="861" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1srstate_1_1ukf__state_1a0cd68e2eff4ab4feed22bcdb8ffcb9b8" prot="public" static="no" mutable="no">
+        <type>gsl_matrix *</type>
+        <definition>gsl_matrix* ukf::srstate::ukf_state::temp_n_n</definition>
+        <argsstring></argsstring>
+        <name>temp_n_n</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="863" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="863" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1srstate_1_1ukf__state_1a74e1d652fbafe8fe531bd6c61ef33ed8" prot="public" static="no" mutable="no">
+        <type>gsl_matrix *</type>
+        <definition>gsl_matrix* ukf::srstate::ukf_state::temp_n_1</definition>
+        <argsstring></argsstring>
+        <name>temp_n_1</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="864" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="864" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1srstate_1_1ukf__state_1a231b41faf198e81926477756e3f2c2e5" prot="public" static="no" mutable="no">
+        <type>gsl_matrix *</type>
+        <definition>gsl_matrix* ukf::srstate::ukf_state::temp_1_n</definition>
+        <argsstring></argsstring>
+        <name>temp_1_n</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="865" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="865" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1srstate_1_1ukf__state_1a483422efe8d15e91ff527261fbfbbbb7" prot="public" static="no" mutable="no">
+        <type>gsl_matrix *</type>
+        <definition>gsl_matrix* ukf::srstate::ukf_state::temp_n_no</definition>
+        <argsstring></argsstring>
+        <name>temp_n_no</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="867" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="867" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1srstate_1_1ukf__state_1a961545fff86f5f611e5a64f76166be0c" prot="public" static="no" mutable="no">
+        <type>gsl_matrix *</type>
+        <definition>gsl_matrix* ukf::srstate::ukf_state::temp_no_no</definition>
+        <argsstring></argsstring>
+        <name>temp_no_no</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="869" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="869" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1srstate_1_1ukf__state_1a051b7e63dd546f62f0c57df7fac63efb" prot="public" static="no" mutable="no">
+        <type>gsl_matrix *</type>
+        <definition>gsl_matrix* ukf::srstate::ukf_state::temp_no_1</definition>
+        <argsstring></argsstring>
+        <name>temp_no_1</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="870" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="870" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1srstate_1_1ukf__state_1a00ab5d6e7673817ab87c143df0e3b698" prot="public" static="no" mutable="no">
+        <type>gsl_matrix *</type>
+        <definition>gsl_matrix* ukf::srstate::ukf_state::temp_1_no</definition>
+        <argsstring></argsstring>
+        <name>temp_1_no</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="871" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="871" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1srstate_1_1ukf__state_1a478e32bd9fdb16834d784f6a30954510" prot="public" static="no" mutable="no">
+        <type>gsl_matrix *</type>
+        <definition>gsl_matrix* ukf::srstate::ukf_state::temp_3n_n</definition>
+        <argsstring></argsstring>
+        <name>temp_3n_n</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="873" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="873" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1srstate_1_1ukf__state_1abaf7742e033e303907f9084a89f22301" prot="public" static="no" mutable="no">
+        <type>gsl_matrix *</type>
+        <definition>gsl_matrix* ukf::srstate::ukf_state::temp_2nno_no</definition>
+        <argsstring></argsstring>
+        <name>temp_2nno_no</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="874" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="874" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Structure holding the matrices manipulated by the statistical linearization in the vectorial case for state estimation. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="826" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="825" bodyend="875"/>
+    <listofallmembers>
+      <member refid="structukf_1_1srstate_1_1ukf__state_1add7a90f3736c8909a2e3abc3e4235ba7" prot="public" virt="non-virtual"><scope>ukf::srstate::ukf_state</scope><name>ino_yi</name></member>
+      <member refid="structukf_1_1srstate_1_1ukf__state_1a43bbdfbb7c743522ebc18b2e299c7c1e" prot="public" virt="non-virtual"><scope>ukf::srstate::ukf_state</scope><name>Ki</name></member>
+      <member refid="structukf_1_1srstate_1_1ukf__state_1ab11872ef0fce0c3b1c02eb19e6198fb1" prot="public" virt="non-virtual"><scope>ukf::srstate::ukf_state</scope><name>Ki_T</name></member>
+      <member refid="structukf_1_1srstate_1_1ukf__state_1a923a0facfe402f098a4da50e8f184f61" prot="public" virt="non-virtual"><scope>ukf::srstate::ukf_state</scope><name>params</name></member>
+      <member refid="structukf_1_1srstate_1_1ukf__state_1a0d210360e59328e219b5f37751baac35" prot="public" virt="non-virtual"><scope>ukf::srstate::ukf_state</scope><name>Pxyi</name></member>
+      <member refid="structukf_1_1srstate_1_1ukf__state_1a698d2cd6e4da73ca0b4831e09f9c4419" prot="public" virt="non-virtual"><scope>ukf::srstate::ukf_state</scope><name>sigmaPoint</name></member>
+      <member refid="structukf_1_1srstate_1_1ukf__state_1afea69f7b0d410986ff5f5ca92d70545e" prot="public" virt="non-virtual"><scope>ukf::srstate::ukf_state</scope><name>sigmaPointMeasure</name></member>
+      <member refid="structukf_1_1srstate_1_1ukf__state_1a458721ed2b8869be17e7589024c6bac3" prot="public" virt="non-virtual"><scope>ukf::srstate::ukf_state</scope><name>sigmaPoints</name></member>
+      <member refid="structukf_1_1srstate_1_1ukf__state_1a90056d939d833550de52374098d3e348" prot="public" virt="non-virtual"><scope>ukf::srstate::ukf_state</scope><name>sigmaPointsMeasure</name></member>
+      <member refid="structukf_1_1srstate_1_1ukf__state_1afee48e0e83f20d7d46a478a9b436a42b" prot="public" virt="non-virtual"><scope>ukf::srstate::ukf_state</scope><name>Sni</name></member>
+      <member refid="structukf_1_1srstate_1_1ukf__state_1a51c541f3e8ba1379cb5f61876e17c375" prot="public" virt="non-virtual"><scope>ukf::srstate::ukf_state</scope><name>Svi</name></member>
+      <member refid="structukf_1_1srstate_1_1ukf__state_1aa702fccfc9136bd1d178e03cabf5cee8" prot="public" virt="non-virtual"><scope>ukf::srstate::ukf_state</scope><name>Sxi</name></member>
+      <member refid="structukf_1_1srstate_1_1ukf__state_1a70875ec1b32a4a73816c139ebe54d17e" prot="public" virt="non-virtual"><scope>ukf::srstate::ukf_state</scope><name>Syi</name></member>
+      <member refid="structukf_1_1srstate_1_1ukf__state_1a231b41faf198e81926477756e3f2c2e5" prot="public" virt="non-virtual"><scope>ukf::srstate::ukf_state</scope><name>temp_1_n</name></member>
+      <member refid="structukf_1_1srstate_1_1ukf__state_1a00ab5d6e7673817ab87c143df0e3b698" prot="public" virt="non-virtual"><scope>ukf::srstate::ukf_state</scope><name>temp_1_no</name></member>
+      <member refid="structukf_1_1srstate_1_1ukf__state_1abaf7742e033e303907f9084a89f22301" prot="public" virt="non-virtual"><scope>ukf::srstate::ukf_state</scope><name>temp_2nno_no</name></member>
+      <member refid="structukf_1_1srstate_1_1ukf__state_1a478e32bd9fdb16834d784f6a30954510" prot="public" virt="non-virtual"><scope>ukf::srstate::ukf_state</scope><name>temp_3n_n</name></member>
+      <member refid="structukf_1_1srstate_1_1ukf__state_1a2158f781908727006d11975d94c55ad0" prot="public" virt="non-virtual"><scope>ukf::srstate::ukf_state</scope><name>temp_n</name></member>
+      <member refid="structukf_1_1srstate_1_1ukf__state_1a74e1d652fbafe8fe531bd6c61ef33ed8" prot="public" virt="non-virtual"><scope>ukf::srstate::ukf_state</scope><name>temp_n_1</name></member>
+      <member refid="structukf_1_1srstate_1_1ukf__state_1a0cd68e2eff4ab4feed22bcdb8ffcb9b8" prot="public" virt="non-virtual"><scope>ukf::srstate::ukf_state</scope><name>temp_n_n</name></member>
+      <member refid="structukf_1_1srstate_1_1ukf__state_1a483422efe8d15e91ff527261fbfbbbb7" prot="public" virt="non-virtual"><scope>ukf::srstate::ukf_state</scope><name>temp_n_no</name></member>
+      <member refid="structukf_1_1srstate_1_1ukf__state_1a64e81fa0a22add1316bd66d03e70f105" prot="public" virt="non-virtual"><scope>ukf::srstate::ukf_state</scope><name>temp_no</name></member>
+      <member refid="structukf_1_1srstate_1_1ukf__state_1a051b7e63dd546f62f0c57df7fac63efb" prot="public" virt="non-virtual"><scope>ukf::srstate::ukf_state</scope><name>temp_no_1</name></member>
+      <member refid="structukf_1_1srstate_1_1ukf__state_1a961545fff86f5f611e5a64f76166be0c" prot="public" virt="non-virtual"><scope>ukf::srstate::ukf_state</scope><name>temp_no_no</name></member>
+      <member refid="structukf_1_1srstate_1_1ukf__state_1a903d42d54de210cc63826a6578d64b3c" prot="public" virt="non-virtual"><scope>ukf::srstate::ukf_state</scope><name>U</name></member>
+      <member refid="structukf_1_1srstate_1_1ukf__state_1a5cc587b3f1b1e905242a484df549e4a1" prot="public" virt="non-virtual"><scope>ukf::srstate::ukf_state</scope><name>wc_aug_j</name></member>
+      <member refid="structukf_1_1srstate_1_1ukf__state_1ae224406380a3ab3aff38a97a874c08f3" prot="public" virt="non-virtual"><scope>ukf::srstate::ukf_state</scope><name>wc_j</name></member>
+      <member refid="structukf_1_1srstate_1_1ukf__state_1ae5bd148e7b9dd43dca85f62058d5013f" prot="public" virt="non-virtual"><scope>ukf::srstate::ukf_state</scope><name>wm_aug_j</name></member>
+      <member refid="structukf_1_1srstate_1_1ukf__state_1a0ab8c07796764941502c6a06f7d5b4dc" prot="public" virt="non-virtual"><scope>ukf::srstate::ukf_state</scope><name>wm_j</name></member>
+      <member refid="structukf_1_1srstate_1_1ukf__state_1a9095ffca4f0bc5cbf7a42368cf7463d6" prot="public" virt="non-virtual"><scope>ukf::srstate::ukf_state</scope><name>xi</name></member>
+      <member refid="structukf_1_1srstate_1_1ukf__state_1a0ead044a78987bebf3a2df35efdcead3" prot="public" virt="non-virtual"><scope>ukf::srstate::ukf_state</scope><name>xi_mean</name></member>
+      <member refid="structukf_1_1srstate_1_1ukf__state_1a0876b435bf2ca99901c779bde40d9004" prot="public" virt="non-virtual"><scope>ukf::srstate::ukf_state</scope><name>xi_prediction</name></member>
+      <member refid="structukf_1_1srstate_1_1ukf__state_1af0b49a1284aa6ce02d8fe249df41d434" prot="public" virt="non-virtual"><scope>ukf::srstate::ukf_state</scope><name>yi_mean</name></member>
+      <member refid="structukf_1_1srstate_1_1ukf__state_1ac205dee75be43b32c76b0696d0182ab6" prot="public" virt="non-virtual"><scope>ukf::srstate::ukf_state</scope><name>yi_prediction</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

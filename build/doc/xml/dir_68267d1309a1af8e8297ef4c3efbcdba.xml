@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir">
+    <compoundname>/home/fix_jer/GIT/easykf/src</compoundname>
+    <innerfile refid="ekf_8h">ekf.h</innerfile>
+    <innerfile refid="ekf__types_8h">ekf_types.h</innerfile>
+    <innerfile refid="ukf_8h">ukf.h</innerfile>
+    <innerfile refid="ukf__math_8h">ukf_math.h</innerfile>
+    <innerfile refid="ukf__parameter__ndim_8h">ukf_parameter_ndim.h</innerfile>
+    <innerfile refid="ukf__parameter__scalar_8h">ukf_parameter_scalar.h</innerfile>
+    <innerfile refid="ukf__samples_8h">ukf_samples.h</innerfile>
+    <innerfile refid="ukf__sr__state__ndim_8h">ukf_sr_state_ndim.h</innerfile>
+    <innerfile refid="ukf__state__ndim_8h">ukf_state_ndim.h</innerfile>
+    <innerfile refid="ukf__types_8h">ukf_types.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/fix_jer/GIT/easykf/src/"/>
+  </compounddef>
+</doxygen>

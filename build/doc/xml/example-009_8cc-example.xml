@@ -1,0 +1,309 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="example-009_8cc-example" kind="example">
+    <compoundname>example-009.cc</compoundname>
+    <detaileddescription>
+<para><programlisting><codeline><highlight class="comment">/*<sp/>example-009.cc</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2011-2014<sp/>Jeremy<sp/>Fix</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>This<sp/>program<sp/>is<sp/>free<sp/>software;<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>it<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>the<sp/>Free<sp/>Software<sp/>Foundation;<sp/>either<sp/>version<sp/>3<sp/>of<sp/>the<sp/>License,<sp/>or<sp/>(at</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>your<sp/>option)<sp/>any<sp/>later<sp/>version.</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>This<sp/>program<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,<sp/>but</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>WITHOUT<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>MERCHANTABILITY<sp/>or<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the<sp/>GNU</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>General<sp/>Public<sp/>License<sp/>for<sp/>more<sp/>details.</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>General<sp/>Public<sp/>License</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>along<sp/>with<sp/>this<sp/>program;<sp/>if<sp/>not,<sp/>write<sp/>to<sp/>the<sp/>Free<sp/>Software</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>Foundation,<sp/>Inc.,<sp/>51<sp/>Franklin<sp/>Street,<sp/>Fifth<sp/>Floor,<sp/>Boston,<sp/>MA<sp/>02110-1301,<sp/>USA.</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">/*<sp/>In<sp/>this<sp/>example,<sp/>we<sp/>use<sp/>EKF<sp/>for<sp/>state/parameter<sp/>estimation<sp/>in<sp/>order<sp/>to<sp/>estimate<sp/>the<sp/>state<sp/>and<sp/>parameters<sp/>of<sp/>a<sp/>Lorentz<sp/>attractor<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdlib&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cmath&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fstream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="ukf_8h" kindref="compound">ukf.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/time.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">ekf;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SIGMA<sp/>10.0</highlight></codeline>
+<codeline><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>RHO<sp/>28.0</highlight></codeline>
+<codeline><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BETA<sp/>8.0/3.0</highlight></codeline>
+<codeline><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>DT<sp/>0.01</highlight></codeline>
+<codeline><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>X0<sp/>0.1</highlight></codeline>
+<codeline><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>Y0<sp/>1.2</highlight></codeline>
+<codeline><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>Z0<sp/>0.4</highlight></codeline>
+<codeline><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>NOISE_AMPLITUDE<sp/>2.0</highlight></codeline>
+<codeline><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VERBOSE<sp/>true</highlight></codeline>
+<codeline><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">/*************************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">/*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Definition<sp/>of<sp/>the<sp/>evolution<sp/>and<sp/>observation<sp/>functions<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">/*************************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>Evolution<sp/>function</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>f(gsl_vector<sp/>*<sp/>params,<sp/>gsl_vector<sp/>*<sp/>xk_1,<sp/>gsl_vector<sp/>*<sp/>xk)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>x<sp/>=<sp/>gsl_vector_get(xk_1,0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>y<sp/>=<sp/>gsl_vector_get(xk_1,1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>z<sp/>=<sp/>gsl_vector_get(xk_1,2);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>sigma<sp/>=<sp/>gsl_vector_get(xk_1,3);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>rho<sp/>=<sp/>gsl_vector_get(xk_1,4);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>beta<sp/>=<sp/>gsl_vector_get(xk_1,5);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dt<sp/>=<sp/>gsl_vector_get(params,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_vector_set(xk,<sp/>0,<sp/>x<sp/>+<sp/>dt<sp/>*<sp/>(sigma*(<sp/>y<sp/>-<sp/>x)));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_vector_set(xk,<sp/>1,<sp/>y<sp/>+<sp/>dt<sp/>*<sp/>(<sp/>rho<sp/>*<sp/>x<sp/>-<sp/>y<sp/>-<sp/>x<sp/>*<sp/>z));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_vector_set(xk,<sp/>2,<sp/>z<sp/>+<sp/>dt<sp/>*<sp/>(x<sp/>*<sp/>y<sp/>-<sp/>beta<sp/>*<sp/>z));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_vector_set(xk,<sp/>3,<sp/>sigma);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_vector_set(xk,<sp/>4,<sp/>rho);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_vector_set(xk,<sp/>5,<sp/>beta);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>Jacobian<sp/>of<sp/>the<sp/>evolution<sp/>function</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>df(gsl_vector<sp/>*<sp/>params,<sp/>gsl_vector<sp/>*<sp/>xk_1,<sp/>gsl_matrix<sp/>*<sp/>Fxk)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>x<sp/>=<sp/>gsl_vector_get(xk_1,0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>y<sp/>=<sp/>gsl_vector_get(xk_1,1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>z<sp/>=<sp/>gsl_vector_get(xk_1,2);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>sigma<sp/>=<sp/>gsl_vector_get(xk_1,3);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>rho<sp/>=<sp/>gsl_vector_get(xk_1,4);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>beta<sp/>=<sp/>gsl_vector_get(xk_1,5);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dt<sp/>=<sp/>gsl_vector_get(params,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Derivatives<sp/>for<sp/>x(t+1)<sp/>=<sp/>..</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set(Fxk,<sp/>0,<sp/>0,<sp/>1.0<sp/>-<sp/>sigma<sp/>*<sp/>dt);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set(Fxk,<sp/>0,<sp/>1,<sp/>sigma<sp/>*<sp/>dt);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set(Fxk,<sp/>0,<sp/>2,<sp/>0.0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set(Fxk,<sp/>0,<sp/>3,<sp/>dt<sp/>*<sp/>(y<sp/>-<sp/>x));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set(Fxk,<sp/>0,<sp/>4,<sp/>0.0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set(Fxk,<sp/>0,<sp/>5,<sp/>0.0);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Derivatives<sp/>for<sp/>y(t+1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set(Fxk,<sp/>1,<sp/>0,<sp/>dt<sp/>*<sp/>(rho<sp/>-<sp/>z));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set(Fxk,<sp/>1,<sp/>1,<sp/>1.0<sp/>-<sp/>dt);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set(Fxk,<sp/>1,<sp/>2,<sp/>-<sp/>dt<sp/>*<sp/>x);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set(Fxk,<sp/>1,<sp/>3,<sp/>0.0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set(Fxk,<sp/>1,<sp/>4,<sp/>dt<sp/>*<sp/>x);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set(Fxk,<sp/>1,<sp/>5,<sp/>0.0);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Derivatives<sp/>for<sp/>z(t+1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set(Fxk,<sp/>2,<sp/>0,<sp/>dt<sp/>*<sp/>y);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set(Fxk,<sp/>2,<sp/>1,<sp/>dt<sp/>*<sp/>x);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set(Fxk,<sp/>2,<sp/>2,<sp/>1.0<sp/>-<sp/>beta<sp/>*<sp/>dt);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set(Fxk,<sp/>2,<sp/>3,<sp/>0.0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set(Fxk,<sp/>2,<sp/>4,<sp/>0.0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set(Fxk,<sp/>2,<sp/>5,<sp/>-dt<sp/>*<sp/>z);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Derivatives<sp/>for<sp/>sigma(t+1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set(Fxk,<sp/>3,<sp/>0,<sp/>0.0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set(Fxk,<sp/>3,<sp/>1,<sp/>0.0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set(Fxk,<sp/>3,<sp/>2,<sp/>0.0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set(Fxk,<sp/>3,<sp/>3,<sp/>1.0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set(Fxk,<sp/>3,<sp/>4,<sp/>0.0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set(Fxk,<sp/>3,<sp/>5,<sp/>0.0);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Derivatives<sp/>for<sp/>rho(t+1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set(Fxk,<sp/>4,<sp/>0,<sp/>0.0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set(Fxk,<sp/>4,<sp/>1,<sp/>0.0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set(Fxk,<sp/>4,<sp/>2,<sp/>0.0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set(Fxk,<sp/>4,<sp/>3,<sp/>0.0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set(Fxk,<sp/>4,<sp/>4,<sp/>1.0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set(Fxk,<sp/>4,<sp/>5,<sp/>0.0);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Derivatives<sp/>for<sp/>beta(t+1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set(Fxk,<sp/>5,<sp/>0,<sp/>0.0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set(Fxk,<sp/>5,<sp/>1,<sp/>0.0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set(Fxk,<sp/>5,<sp/>2,<sp/>0.0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set(Fxk,<sp/>5,<sp/>3,<sp/>0.0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set(Fxk,<sp/>5,<sp/>4,<sp/>0.0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set(Fxk,<sp/>5,<sp/>5,<sp/>1.0);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>Observation<sp/>function</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>h(gsl_vector<sp/>*<sp/>params,<sp/>gsl_vector<sp/>*<sp/>xk<sp/>,<sp/>gsl_vector<sp/>*<sp/>yk)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0<sp/>;<sp/>i<sp/>&lt;<sp/>yk-&gt;size<sp/>;<sp/>++i)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gsl_vector_set(yk,<sp/>i,<sp/>gsl_vector_get(xk,i)<sp/>+<sp/>NOISE_AMPLITUDE*rand()/<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">(RAND_MAX));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>Jacobian<sp/>of<sp/>the<sp/>observation<sp/>function</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>dh(gsl_vector<sp/>*<sp/>params,<sp/>gsl_vector<sp/>*<sp/>xk<sp/>,<sp/>gsl_matrix<sp/>*<sp/>Hyk)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set_zero(Hyk);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set(Hyk,<sp/>0,<sp/>0,<sp/>1.0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set(Hyk,<sp/>1,<sp/>1,<sp/>1.0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set(Hyk,<sp/>2,<sp/>2,<sp/>1.0);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">/*****************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">/*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>main<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">/*****************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argc,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>argv[])<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">timeval<sp/>before,<sp/>after;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>srand(time(NULL));</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Definition<sp/>of<sp/>the<sp/>parameters<sp/>and<sp/>state<sp/>variables</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structekf_1_1ekf__param" kindref="compound">ekf_param</ref><sp/>p;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structekf_1_1ekf__state" kindref="compound">ekf_state</ref><sp/>s;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>parameters<sp/>for<sp/>the<sp/>evolution<sp/>equation</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>s.<ref refid="structekf_1_1ekf__state_1abe2839dd3805e4dd56c613227788606f" kindref="member">params</ref><sp/>=<sp/>gsl_vector_alloc(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>s.<ref refid="structekf_1_1ekf__state_1abe2839dd3805e4dd56c613227788606f" kindref="member">params</ref>-&gt;data[0]<sp/>=<sp/>DT;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialization<sp/>of<sp/>the<sp/>parameters</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>p.<ref refid="structekf_1_1ekf__param_1a1246cf99fd3c8a31199c74c2ebc96574" kindref="member">n</ref><sp/>=<sp/>6;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>p.<ref refid="structekf_1_1ekf__param_1a1430eac7209095599a396000fc31ec8c" kindref="member">no</ref><sp/>=<sp/>3;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//EvolutionNoise<sp/>*<sp/>evolution_noise<sp/>=<sp/>new<sp/>ekf::EvolutionAnneal(1e-2,<sp/>0.99,<sp/>1e-8);</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classukf_1_1parameter_1_1EvolutionNoise" kindref="compound">EvolutionNoise</ref><sp/>*<sp/>evolution_noise<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classekf_1_1EvolutionRLS" kindref="compound">ekf::EvolutionRLS</ref>(1e-2,<sp/>0.9995);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//EvolutionNoise<sp/>*<sp/>evolution_noise<sp/>=<sp/>new<sp/>ekf::EvolutionRobbinsMonro(1e-5,<sp/>1e-6);</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>p.<ref refid="structekf_1_1ekf__param_1a9b71dc086b83e78c78f6258ce19fafb4" kindref="member">evolution_noise</ref><sp/>=<sp/>evolution_noise;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>p.<ref refid="structekf_1_1ekf__param_1a931255569a953be75868b7ef098ff310" kindref="member">observation_noise</ref><sp/>=<sp/>1e-1;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>p.<ref refid="structekf_1_1ekf__param_1afc3c7b95fe943c99c49e7b0c5703de68" kindref="member">prior_pk</ref><sp/>=<sp/>1.0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>p.<ref refid="structekf_1_1ekf__param_1a8e3a67547cde4646e17689a669fb25bc" kindref="member">observation_gradient_is_diagonal</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialization<sp/>of<sp/>the<sp/>state<sp/>and<sp/>parameters</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceekf_1a11045811ee6b53e5676adcb4829445de" kindref="member">ekf_init</ref>(p,s);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialize<sp/>the<sp/>parameter<sp/>vector<sp/>to<sp/>some<sp/>random<sp/>values</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0<sp/>;<sp/>i<sp/>&lt;<sp/>p.<ref refid="structekf_1_1ekf__param_1a1246cf99fd3c8a31199c74c2ebc96574" kindref="member">n</ref><sp/>;<sp/>i++)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gsl_vector_set(s.<ref refid="structekf_1_1ekf__state_1a13fc45f72e07e8396866ae3796095282" kindref="member">xk</ref>,i,5.0*(2.0*rand()/</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">(RAND_MAX-1)-1.0));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>s.<ref refid="structekf_1_1ekf__state_1a13fc45f72e07e8396866ae3796095282" kindref="member">xk</ref>-&gt;data[0]<sp/>=<sp/>-15.0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>s.<ref refid="structekf_1_1ekf__state_1a13fc45f72e07e8396866ae3796095282" kindref="member">xk</ref>-&gt;data[1]<sp/>=<sp/>-15.0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>s.<ref refid="structekf_1_1ekf__state_1a13fc45f72e07e8396866ae3796095282" kindref="member">xk</ref>-&gt;data[2]<sp/>=<sp/>-15.0;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Allocate<sp/>the<sp/>input/output<sp/>vectors</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_vector<sp/>*<sp/>xi<sp/>=<sp/>gsl_vector_alloc(p.<ref refid="structekf_1_1ekf__param_1a1246cf99fd3c8a31199c74c2ebc96574" kindref="member">n</ref>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_vector<sp/>*<sp/>yi<sp/>=<sp/>gsl_vector_alloc(p.<ref refid="structekf_1_1ekf__param_1a1430eac7209095599a396000fc31ec8c" kindref="member">no</ref>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_vector_set_zero(yi);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/***********************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*****<sp/>Iterate<sp/>the<sp/>learning<sp/>on<sp/>the<sp/>samples<sp/>*****/</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/***********************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>epoch<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>xi-&gt;data[0]<sp/>=<sp/>X0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>xi-&gt;data[1]<sp/>=<sp/>Y0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>xi-&gt;data[2]<sp/>=<sp/>Z0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>xi-&gt;data[3]<sp/>=<sp/>SIGMA;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>xi-&gt;data[4]<sp/>=<sp/>RHO;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>xi-&gt;data[5]<sp/>=<sp/>BETA;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::ofstream<sp/>outfile(</highlight><highlight class="stringliteral">&quot;example-009.data&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::ofstream<sp/>outfile_rms(</highlight><highlight class="stringliteral">&quot;example-009-rms.data&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>rms=<sp/>0.0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>errorBound<sp/>=<sp/>NOISE_AMPLITUDE/2.0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>count_time=0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nb_steps_below_error=1000;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//int<sp/>is_counting=0;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gettimeofday(&amp;before,<sp/>NULL);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>outfile<sp/>&lt;&lt;<sp/>epoch<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0<sp/>;<sp/>i<sp/>&lt;<sp/>6<sp/>;<sp/>++i)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>outfile<sp/>&lt;&lt;<sp/>xi-&gt;data[i]<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal"><sp/>;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0<sp/>;<sp/>i<sp/>&lt;<sp/>3<sp/>;<sp/>++i)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>outfile<sp/>&lt;&lt;<sp/>yi-&gt;data[i]<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal"><sp/>;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0<sp/>;<sp/>i<sp/>&lt;<sp/>6<sp/>;<sp/>++i)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>outfile<sp/>&lt;&lt;<sp/>s.<ref refid="structekf_1_1ekf__state_1a13fc45f72e07e8396866ae3796095282" kindref="member">xk</ref>-&gt;data[i]<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal"><sp/>;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>outfile<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(<sp/>epoch<sp/>&lt;<sp/>8000)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//printf(&quot;Epoch<sp/>%i<sp/>\n&quot;,<sp/>epoch);</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Evaluate<sp/>the<sp/>true<sp/>dynamical<sp/>system</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>f(s.<ref refid="structekf_1_1ekf__state_1abe2839dd3805e4dd56c613227788606f" kindref="member">params</ref>,<sp/>xi,<sp/>xi);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>h(s.<ref refid="structekf_1_1ekf__state_1abe2839dd3805e4dd56c613227788606f" kindref="member">params</ref>,<sp/>xi,<sp/>yi);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Provide<sp/>the<sp/>observation<sp/>and<sp/>iterate</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceekf_1a59a2f5e87de993d4320c6c2492ab03f1" kindref="member">ekf_iterate</ref>(p,s,f,df,h,dh,yi);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>epoch++;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rms<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0<sp/>;<sp/>i<sp/>&lt;<sp/>p.<ref refid="structekf_1_1ekf__param_1a1246cf99fd3c8a31199c74c2ebc96574" kindref="member">n</ref><sp/>;<sp/>++i)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rms<sp/>+=<sp/>gsl_pow_2(xi-&gt;data[i]<sp/>-<sp/>s.<ref refid="structekf_1_1ekf__state_1a13fc45f72e07e8396866ae3796095282" kindref="member">xk</ref>-&gt;data[i]);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rms<sp/>/=<sp/>double(p.<ref refid="structekf_1_1ekf__param_1a1246cf99fd3c8a31199c74c2ebc96574" kindref="member">n</ref>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rms<sp/>=<sp/>sqrt(rms);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(rms<sp/>&lt;=<sp/>errorBound)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>count_time++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(count_time<sp/>&gt;=<sp/>nb_steps_below_error)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>count_time<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;[%i]<sp/>True<sp/>state<sp/>:<sp/>%e<sp/>%e<sp/>%e<sp/>%e<sp/>%e<sp/>%e,<sp/>estimated<sp/>:<sp/>%e<sp/>%e<sp/>%e<sp/>%e<sp/>%e<sp/>%e\n&quot;</highlight><highlight class="normal">,<sp/>epoch,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>xi-&gt;data[0],</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>xi-&gt;data[1],</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>xi-&gt;data[2],</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>xi-&gt;data[3],</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>xi-&gt;data[4],</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>xi-&gt;data[5],</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s.<ref refid="structekf_1_1ekf__state_1a13fc45f72e07e8396866ae3796095282" kindref="member">xk</ref>-&gt;data[0],</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s.<ref refid="structekf_1_1ekf__state_1a13fc45f72e07e8396866ae3796095282" kindref="member">xk</ref>-&gt;data[1],</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s.<ref refid="structekf_1_1ekf__state_1a13fc45f72e07e8396866ae3796095282" kindref="member">xk</ref>-&gt;data[2],</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s.<ref refid="structekf_1_1ekf__state_1a13fc45f72e07e8396866ae3796095282" kindref="member">xk</ref>-&gt;data[3],</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s.<ref refid="structekf_1_1ekf__state_1a13fc45f72e07e8396866ae3796095282" kindref="member">xk</ref>-&gt;data[4],</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s.<ref refid="structekf_1_1ekf__state_1a13fc45f72e07e8396866ae3796095282" kindref="member">xk</ref>-&gt;data[5]);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>outfile<sp/>&lt;&lt;<sp/>epoch<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0<sp/>;<sp/>i<sp/>&lt;<sp/>6<sp/>;<sp/>++i)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>outfile<sp/>&lt;&lt;<sp/>xi-&gt;data[i]<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal"><sp/>;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0<sp/>;<sp/>i<sp/>&lt;<sp/>3<sp/>;<sp/>++i)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>outfile<sp/>&lt;&lt;<sp/>yi-&gt;data[i]<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal"><sp/>;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0<sp/>;<sp/>i<sp/>&lt;<sp/>6<sp/>;<sp/>++i)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>outfile<sp/>&lt;&lt;<sp/>s.<ref refid="structekf_1_1ekf__state_1a13fc45f72e07e8396866ae3796095282" kindref="member">xk</ref>-&gt;data[i]<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal"><sp/>;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>outfile<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>outfile_rms<sp/>&lt;&lt;<sp/>rms<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gettimeofday(&amp;after,<sp/>NULL);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>sbefore<sp/>=<sp/>before.tv_sec<sp/>+<sp/>before.tv_usec<sp/>*<sp/>1E-6;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>safter<sp/>=<sp/>after.tv_sec<sp/>+<sp/>after.tv_usec<sp/>*<sp/>1E-6;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>total<sp/>=<sp/>safter<sp/>-<sp/>sbefore;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>outfile.close();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>outfile_rms.close();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>Run<sp/>on<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>epoch<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>epochs<sp/>;&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><sp/>std::scientific<sp/>&lt;&lt;<sp/>total<sp/>/<sp/>double(epoch)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>s./step<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;I<sp/>found<sp/>the<sp/>following<sp/>parameters<sp/>:<sp/>%e<sp/>%e<sp/>%e<sp/>;<sp/>The<sp/>true<sp/>parameters<sp/>being<sp/>:<sp/>%e<sp/>%e<sp/>%e<sp/>\n&quot;</highlight><highlight class="normal">,<sp/>s.<ref refid="structekf_1_1ekf__state_1a13fc45f72e07e8396866ae3796095282" kindref="member">xk</ref>-&gt;data[3],<sp/>s.<ref refid="structekf_1_1ekf__state_1a13fc45f72e07e8396866ae3796095282" kindref="member">xk</ref>-&gt;data[4],s.<ref refid="structekf_1_1ekf__state_1a13fc45f72e07e8396866ae3796095282" kindref="member">xk</ref>-&gt;data[5],SIGMA,<sp/>RHO,<sp/>BETA);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>Outputs<sp/>are<sp/>saved<sp/>in<sp/>example-009*.data<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>You<sp/>can<sp/>plot<sp/>them<sp/>using<sp/>e.g.<sp/>gnuplot<sp/>:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//std::cout<sp/>&lt;&lt;<sp/>&quot;<sp/>gnuplot<sp/>Data/plot-example-009.gplot<sp/>;<sp/>gv<sp/>Output/example-009-rms.ps<sp/>;<sp/>gv<sp/>Output/example-009-Lorentz.ps<sp/>&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/***********************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/****<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Free<sp/>the<sp/>memory<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>****/</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/***********************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceekf_1ad089f09f2d932343f311b16d414c1c6b" kindref="member">ekf_free</ref>(p,s);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+</programlisting> </para>    </detaileddescription>
+  </compounddef>
+</doxygen>

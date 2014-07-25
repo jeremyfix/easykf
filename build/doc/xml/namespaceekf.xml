@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="namespaceekf" kind="namespace">
+    <compoundname>ekf</compoundname>
+    <innerclass refid="structekf_1_1ekf__param" prot="public">ekf::ekf_param</innerclass>
+    <innerclass refid="structekf_1_1ekf__state" prot="public">ekf::ekf_state</innerclass>
+    <innerclass refid="classekf_1_1EvolutionNoise" prot="public">ekf::EvolutionNoise</innerclass>
+    <innerclass refid="classekf_1_1EvolutionAnneal" prot="public">ekf::EvolutionAnneal</innerclass>
+    <innerclass refid="classekf_1_1EvolutionRLS" prot="public">ekf::EvolutionRLS</innerclass>
+    <innerclass refid="classekf_1_1EvolutionRobbinsMonro" prot="public">ekf::EvolutionRobbinsMonro</innerclass>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceekf_1a11045811ee6b53e5676adcb4829445de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ekf::ekf_init</definition>
+        <argsstring>(ekf_param &amp;p, ekf_state &amp;s)</argsstring>
+        <name>ekf_init</name>
+        <param>
+          <type><ref refid="structekf_1_1ekf__param" kindref="compound">ekf_param</ref> &amp;</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type><ref refid="structekf_1_1ekf__state" kindref="compound">ekf_state</ref> &amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ekf.h" line="31" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ekf.h" bodystart="31" bodyend="99"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceekf_1ad089f09f2d932343f311b16d414c1c6b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ekf::ekf_free</definition>
+        <argsstring>(ekf_param &amp;p, ekf_state &amp;s)</argsstring>
+        <name>ekf_free</name>
+        <param>
+          <type><ref refid="structekf_1_1ekf__param" kindref="compound">ekf_param</ref> &amp;</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type><ref refid="structekf_1_1ekf__state" kindref="compound">ekf_state</ref> &amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ekf.h" line="101" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ekf.h" bodystart="101" bodyend="122"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceekf_1a59a2f5e87de993d4320c6c2492ab03f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename FunctProcess</type>
+          </param>
+          <param>
+            <type>typename JacobianProcess</type>
+          </param>
+          <param>
+            <type>typename FunctObservation</type>
+          </param>
+          <param>
+            <type>typename JacobianObservation</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void ekf::ekf_iterate</definition>
+        <argsstring>(ekf_param &amp;p, ekf_state &amp;s, FunctProcess f, JacobianProcess df, FunctObservation h, JacobianObservation dh, gsl_vector *yk)</argsstring>
+        <name>ekf_iterate</name>
+        <param>
+          <type><ref refid="structekf_1_1ekf__param" kindref="compound">ekf_param</ref> &amp;</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type><ref refid="structekf_1_1ekf__state" kindref="compound">ekf_state</ref> &amp;</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>FunctProcess</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>JacobianProcess</type>
+          <declname>df</declname>
+        </param>
+        <param>
+          <type>FunctObservation</type>
+          <declname>h</declname>
+        </param>
+        <param>
+          <type>JacobianObservation</type>
+          <declname>dh</declname>
+        </param>
+        <param>
+          <type>gsl_vector *</type>
+          <declname>yk</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ekf.h" line="125" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ekf.h" bodystart="125" bodyend="245"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Extended Kalman Filter in the case of additive noise, the notations follow Van Der Merwe, phD, p. 36. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/fix_jer/GIT/easykf/src/ekf.h" line="29" column="1"/>
+  </compounddef>
+</doxygen>

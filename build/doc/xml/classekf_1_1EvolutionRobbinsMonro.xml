@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="classekf_1_1EvolutionRobbinsMonro" kind="class" prot="public">
+    <compoundname>ekf::EvolutionRobbinsMonro</compoundname>
+    <basecompoundref refid="classekf_1_1EvolutionNoise" prot="public" virt="non-virtual">ekf::EvolutionNoise</basecompoundref>
+    <includes refid="ekf__types_8h" local="no">ekf_types.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classekf_1_1EvolutionRobbinsMonro_1ac75da8ea982c5c2b35dd49703ec172bf" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double ekf::EvolutionRobbinsMonro::_alpha</definition>
+        <argsstring></argsstring>
+        <name>_alpha</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ekf_types.h" line="215" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ekf_types.h" bodystart="215" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classekf_1_1EvolutionRobbinsMonro_1ad34c1fb7b1ee0305d5e8b15462c19c49" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ekf::EvolutionRobbinsMonro::EvolutionRobbinsMonro</definition>
+        <argsstring>(double initial_value, double alpha)</argsstring>
+        <name>EvolutionRobbinsMonro</name>
+        <param>
+          <type>double</type>
+          <declname>initial_value</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>alpha</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ekf_types.h" line="217" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ekf_types.h" bodystart="217" bodyend="219"/>
+      </memberdef>
+      <memberdef kind="function" id="classekf_1_1EvolutionRobbinsMonro_1a34b4a3a6a4a94781b6289570c801b2c3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void ekf::EvolutionRobbinsMonro::updateEvolutionNoise</definition>
+        <argsstring>(ekf_param &amp;p, ekf_state &amp;s)</argsstring>
+        <name>updateEvolutionNoise</name>
+        <reimplements refid="classekf_1_1EvolutionNoise_1aaac5a89c8474b327c8b4cf22217e220a">updateEvolutionNoise</reimplements>
+        <param>
+          <type><ref refid="structekf_1_1ekf__param" kindref="compound">ekf_param</ref> &amp;</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type><ref refid="structekf_1_1ekf__state" kindref="compound">ekf_state</ref> &amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ekf_types.h" line="221" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ekf_types.h" bodystart="221" bodyend="228"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Robbins-Monro evolution noise. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="19">
+        <label>ekf::EvolutionNoise</label>
+        <link refid="classekf_1_1EvolutionNoise"/>
+      </node>
+      <node id="18">
+        <label>ekf::EvolutionRobbinsMonro</label>
+        <link refid="classekf_1_1EvolutionRobbinsMonro"/>
+        <childnode refid="19" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="21">
+        <label>ekf::EvolutionNoise</label>
+        <link refid="classekf_1_1EvolutionNoise"/>
+      </node>
+      <node id="20">
+        <label>ekf::EvolutionRobbinsMonro</label>
+        <link refid="classekf_1_1EvolutionRobbinsMonro"/>
+        <childnode refid="21" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/fix_jer/GIT/easykf/src/ekf_types.h" line="214" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ekf_types.h" bodystart="213" bodyend="229"/>
+    <listofallmembers>
+      <member refid="classekf_1_1EvolutionRobbinsMonro_1ac75da8ea982c5c2b35dd49703ec172bf" prot="private" virt="non-virtual"><scope>ekf::EvolutionRobbinsMonro</scope><name>_alpha</name></member>
+      <member refid="classekf_1_1EvolutionNoise_1ab81cba204320db6f28479ab8b33ac8d8" prot="protected" virt="non-virtual"><scope>ekf::EvolutionRobbinsMonro</scope><name>_initial_value</name></member>
+      <member refid="classekf_1_1EvolutionNoise_1a8db04b04e6523d58c6118f171b02ab63" prot="public" virt="non-virtual"><scope>ekf::EvolutionRobbinsMonro</scope><name>EvolutionNoise</name></member>
+      <member refid="classekf_1_1EvolutionRobbinsMonro_1ad34c1fb7b1ee0305d5e8b15462c19c49" prot="public" virt="non-virtual"><scope>ekf::EvolutionRobbinsMonro</scope><name>EvolutionRobbinsMonro</name></member>
+      <member refid="classekf_1_1EvolutionNoise_1a9513f65f9a322f8ffcbf2c568526dd15" prot="public" virt="non-virtual"><scope>ekf::EvolutionRobbinsMonro</scope><name>init</name></member>
+      <member refid="classekf_1_1EvolutionRobbinsMonro_1a34b4a3a6a4a94781b6289570c801b2c3" prot="public" virt="virtual"><scope>ekf::EvolutionRobbinsMonro</scope><name>updateEvolutionNoise</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

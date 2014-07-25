@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="classekf_1_1EvolutionAnneal" kind="class" prot="public">
+    <compoundname>ekf::EvolutionAnneal</compoundname>
+    <basecompoundref refid="classekf_1_1EvolutionNoise" prot="public" virt="non-virtual">ekf::EvolutionNoise</basecompoundref>
+    <includes refid="ekf__types_8h" local="no">ekf_types.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classekf_1_1EvolutionAnneal_1a6646b518852251ae716987764e81dd57" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double ekf::EvolutionAnneal::_decay</definition>
+        <argsstring></argsstring>
+        <name>_decay</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ekf_types.h" line="168" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ekf_types.h" bodystart="168" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classekf_1_1EvolutionAnneal_1a4a54667ed66d4d5d80f78ff183457ac6" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double ekf::EvolutionAnneal::_lower_bound</definition>
+        <argsstring></argsstring>
+        <name>_lower_bound</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ekf_types.h" line="168" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ekf_types.h" bodystart="168" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classekf_1_1EvolutionAnneal_1a44c0b9f64db67ac07041c68a67b3e285" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ekf::EvolutionAnneal::EvolutionAnneal</definition>
+        <argsstring>(double initial_value, double decay, double lower_bound)</argsstring>
+        <name>EvolutionAnneal</name>
+        <param>
+          <type>double</type>
+          <declname>initial_value</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>decay</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>lower_bound</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ekf_types.h" line="170" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ekf_types.h" bodystart="170" bodyend="173"/>
+      </memberdef>
+      <memberdef kind="function" id="classekf_1_1EvolutionAnneal_1adfc225881678f8b47f6711468fd538b3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void ekf::EvolutionAnneal::updateEvolutionNoise</definition>
+        <argsstring>(ekf_param &amp;p, ekf_state &amp;s)</argsstring>
+        <name>updateEvolutionNoise</name>
+        <reimplements refid="classekf_1_1EvolutionNoise_1aaac5a89c8474b327c8b4cf22217e220a">updateEvolutionNoise</reimplements>
+        <param>
+          <type><ref refid="structekf_1_1ekf__param" kindref="compound">ekf_param</ref> &amp;</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type><ref refid="structekf_1_1ekf__state" kindref="compound">ekf_state</ref> &amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ekf_types.h" line="175" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ekf_types.h" bodystart="175" bodyend="187"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Annealing type evolution noise. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="5">
+        <label>ekf::EvolutionAnneal</label>
+        <link refid="classekf_1_1EvolutionAnneal"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>ekf::EvolutionNoise</label>
+        <link refid="classekf_1_1EvolutionNoise"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="7">
+        <label>ekf::EvolutionAnneal</label>
+        <link refid="classekf_1_1EvolutionAnneal"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>ekf::EvolutionNoise</label>
+        <link refid="classekf_1_1EvolutionNoise"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/fix_jer/GIT/easykf/src/ekf_types.h" line="167" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ekf_types.h" bodystart="166" bodyend="188"/>
+    <listofallmembers>
+      <member refid="classekf_1_1EvolutionAnneal_1a6646b518852251ae716987764e81dd57" prot="private" virt="non-virtual"><scope>ekf::EvolutionAnneal</scope><name>_decay</name></member>
+      <member refid="classekf_1_1EvolutionNoise_1ab81cba204320db6f28479ab8b33ac8d8" prot="protected" virt="non-virtual"><scope>ekf::EvolutionAnneal</scope><name>_initial_value</name></member>
+      <member refid="classekf_1_1EvolutionAnneal_1a4a54667ed66d4d5d80f78ff183457ac6" prot="private" virt="non-virtual"><scope>ekf::EvolutionAnneal</scope><name>_lower_bound</name></member>
+      <member refid="classekf_1_1EvolutionAnneal_1a44c0b9f64db67ac07041c68a67b3e285" prot="public" virt="non-virtual"><scope>ekf::EvolutionAnneal</scope><name>EvolutionAnneal</name></member>
+      <member refid="classekf_1_1EvolutionNoise_1a8db04b04e6523d58c6118f171b02ab63" prot="public" virt="non-virtual"><scope>ekf::EvolutionAnneal</scope><name>EvolutionNoise</name></member>
+      <member refid="classekf_1_1EvolutionNoise_1a9513f65f9a322f8ffcbf2c568526dd15" prot="public" virt="non-virtual"><scope>ekf::EvolutionAnneal</scope><name>init</name></member>
+      <member refid="classekf_1_1EvolutionAnneal_1adfc225881678f8b47f6711468fd538b3" prot="public" virt="virtual"><scope>ekf::EvolutionAnneal</scope><name>updateEvolutionNoise</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

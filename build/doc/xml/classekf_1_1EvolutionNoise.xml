@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="classekf_1_1EvolutionNoise" kind="class" prot="public" abstract="yes">
+    <compoundname>ekf::EvolutionNoise</compoundname>
+    <derivedcompoundref refid="classekf_1_1EvolutionAnneal" prot="public" virt="non-virtual">ekf::EvolutionAnneal</derivedcompoundref>
+    <derivedcompoundref refid="classekf_1_1EvolutionRLS" prot="public" virt="non-virtual">ekf::EvolutionRLS</derivedcompoundref>
+    <derivedcompoundref refid="classekf_1_1EvolutionRobbinsMonro" prot="public" virt="non-virtual">ekf::EvolutionRobbinsMonro</derivedcompoundref>
+    <includes refid="ekf__types_8h" local="no">ekf_types.h</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classekf_1_1EvolutionNoise_1ab81cba204320db6f28479ab8b33ac8d8" prot="protected" static="no" mutable="no">
+        <type>double</type>
+        <definition>double ekf::EvolutionNoise::_initial_value</definition>
+        <argsstring></argsstring>
+        <name>_initial_value</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ekf_types.h" line="151" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ekf_types.h" bodystart="151" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classekf_1_1EvolutionNoise_1a8db04b04e6523d58c6118f171b02ab63" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ekf::EvolutionNoise::EvolutionNoise</definition>
+        <argsstring>(double initial_value)</argsstring>
+        <name>EvolutionNoise</name>
+        <param>
+          <type>double</type>
+          <declname>initial_value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ekf_types.h" line="153" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ekf_types.h" bodystart="153" bodyend="153"/>
+      </memberdef>
+      <memberdef kind="function" id="classekf_1_1EvolutionNoise_1a9513f65f9a322f8ffcbf2c568526dd15" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ekf::EvolutionNoise::init</definition>
+        <argsstring>(ekf_param &amp;p, ekf_state &amp;s)</argsstring>
+        <name>init</name>
+        <param>
+          <type><ref refid="structekf_1_1ekf__param" kindref="compound">ekf_param</ref> &amp;</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type><ref refid="structekf_1_1ekf__state" kindref="compound">ekf_state</ref> &amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ekf_types.h" line="154" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ekf_types.h" bodystart="154" bodyend="158"/>
+      </memberdef>
+      <memberdef kind="function" id="classekf_1_1EvolutionNoise_1aaac5a89c8474b327c8b4cf22217e220a" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ekf::EvolutionNoise::updateEvolutionNoise</definition>
+        <argsstring>(ekf_param &amp;p, ekf_state &amp;s)=0</argsstring>
+        <name>updateEvolutionNoise</name>
+        <reimplementedby refid="classekf_1_1EvolutionAnneal_1adfc225881678f8b47f6711468fd538b3">updateEvolutionNoise</reimplementedby>
+        <reimplementedby refid="classekf_1_1EvolutionRLS_1a4f5f974e4bca143207a9085e1fead375">updateEvolutionNoise</reimplementedby>
+        <reimplementedby refid="classekf_1_1EvolutionRobbinsMonro_1a34b4a3a6a4a94781b6289570c801b2c3">updateEvolutionNoise</reimplementedby>
+        <param>
+          <type><ref refid="structekf_1_1ekf__param" kindref="compound">ekf_param</ref> &amp;</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type><ref refid="structekf_1_1ekf__state" kindref="compound">ekf_state</ref> &amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ekf_types.h" line="160" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Mother class from which the evolution noises inherit. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="11">
+        <label>ekf::EvolutionRLS</label>
+        <link refid="classekf_1_1EvolutionRLS"/>
+        <childnode refid="9" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>ekf::EvolutionAnneal</label>
+        <link refid="classekf_1_1EvolutionAnneal"/>
+        <childnode refid="9" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>ekf::EvolutionNoise</label>
+        <link refid="classekf_1_1EvolutionNoise"/>
+      </node>
+      <node id="12">
+        <label>ekf::EvolutionRobbinsMonro</label>
+        <link refid="classekf_1_1EvolutionRobbinsMonro"/>
+        <childnode refid="9" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="/home/fix_jer/GIT/easykf/src/ekf_types.h" line="149" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ekf_types.h" bodystart="148" bodyend="161"/>
+    <listofallmembers>
+      <member refid="classekf_1_1EvolutionNoise_1ab81cba204320db6f28479ab8b33ac8d8" prot="protected" virt="non-virtual"><scope>ekf::EvolutionNoise</scope><name>_initial_value</name></member>
+      <member refid="classekf_1_1EvolutionNoise_1a8db04b04e6523d58c6118f171b02ab63" prot="public" virt="non-virtual"><scope>ekf::EvolutionNoise</scope><name>EvolutionNoise</name></member>
+      <member refid="classekf_1_1EvolutionNoise_1a9513f65f9a322f8ffcbf2c568526dd15" prot="public" virt="non-virtual"><scope>ekf::EvolutionNoise</scope><name>init</name></member>
+      <member refid="classekf_1_1EvolutionNoise_1aaac5a89c8474b327c8b4cf22217e220a" prot="public" virt="pure-virtual"><scope>ekf::EvolutionNoise</scope><name>updateEvolutionNoise</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

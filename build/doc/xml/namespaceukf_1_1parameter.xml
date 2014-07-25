@@ -1,0 +1,281 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="namespaceukf_1_1parameter" kind="namespace">
+    <compoundname>ukf::parameter</compoundname>
+    <innerclass refid="structukf_1_1parameter_1_1ukf__param" prot="public">ukf::parameter::ukf_param</innerclass>
+    <innerclass refid="structukf_1_1parameter_1_1ukf__scalar__state" prot="public">ukf::parameter::ukf_scalar_state</innerclass>
+    <innerclass refid="structukf_1_1parameter_1_1ukf__state" prot="public">ukf::parameter::ukf_state</innerclass>
+    <innerclass refid="classukf_1_1parameter_1_1EvolutionNoise" prot="public">ukf::parameter::EvolutionNoise</innerclass>
+    <innerclass refid="classukf_1_1parameter_1_1EvolutionAnneal" prot="public">ukf::parameter::EvolutionAnneal</innerclass>
+    <innerclass refid="classukf_1_1parameter_1_1EvolutionRLS" prot="public">ukf::parameter::EvolutionRLS</innerclass>
+    <innerclass refid="classukf_1_1parameter_1_1EvolutionRobbinsMonro" prot="public">ukf::parameter::EvolutionRobbinsMonro</innerclass>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceukf_1_1parameter_1ad83710f24d64d3b511ff60aa4fc90f03" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ukf::parameter::ukf_init</definition>
+        <argsstring>(ukf_param &amp;p, ukf_state &amp;s)</argsstring>
+        <name>ukf_init</name>
+        <param>
+          <type><ref refid="structukf_1_1parameter_1_1ukf__param" kindref="compound">ukf_param</ref> &amp;</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type><ref refid="structukf_1_1parameter_1_1ukf__state" kindref="compound">ukf_state</ref> &amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+<para>Allocation of the vectors/matrices and initialization. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_parameter_ndim.h" line="38" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_parameter_ndim.h" bodystart="38" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceukf_1_1parameter_1a3edd781b5248176b7404889c96e6a962" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ukf::parameter::ukf_free</definition>
+        <argsstring>(ukf_param &amp;p, ukf_state &amp;s)</argsstring>
+        <name>ukf_free</name>
+        <param>
+          <type><ref refid="structukf_1_1parameter_1_1ukf__param" kindref="compound">ukf_param</ref> &amp;</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type><ref refid="structukf_1_1parameter_1_1ukf__state" kindref="compound">ukf_state</ref> &amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+<para>Free of memory allocation. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_parameter_ndim.h" line="130" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_parameter_ndim.h" bodystart="130" bodyend="166"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceukf_1_1parameter_1aa7af8ceffba2f9288b2d7b86ed57159f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename FunctObj</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void ukf::parameter::ukf_iterate</definition>
+        <argsstring>(ukf_param &amp;p, ukf_state &amp;s, FunctObj g, gsl_vector *xk, gsl_vector *dk)</argsstring>
+        <name>ukf_iterate</name>
+        <param>
+          <type><ref refid="structukf_1_1parameter_1_1ukf__param" kindref="compound">ukf_param</ref> &amp;</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type><ref refid="structukf_1_1parameter_1_1ukf__state" kindref="compound">ukf_state</ref> &amp;</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>FunctObj</type>
+          <declname>g</declname>
+        </param>
+        <param>
+          <type>gsl_vector *</type>
+          <declname>xk</declname>
+        </param>
+        <param>
+          <type>gsl_vector *</type>
+          <declname>dk</declname>
+        </param>
+        <briefdescription>
+<para>Iteration for the statistical linearization. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_parameter_ndim.h" line="173" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_parameter_ndim.h" bodystart="173" bodyend="306"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceukf_1_1parameter_1aaf6c5a1c836abd3dd07c27a3eec2d097" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename FunctObj</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void ukf::parameter::ukf_evaluate</definition>
+        <argsstring>(ukf_param &amp;p, ukf_state &amp;s, FunctObj g, gsl_vector *xk, gsl_vector *dk)</argsstring>
+        <name>ukf_evaluate</name>
+        <param>
+          <type><ref refid="structukf_1_1parameter_1_1ukf__param" kindref="compound">ukf_param</ref> &amp;</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type><ref refid="structukf_1_1parameter_1_1ukf__state" kindref="compound">ukf_state</ref> &amp;</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>FunctObj</type>
+          <declname>g</declname>
+        </param>
+        <param>
+          <type>gsl_vector *</type>
+          <declname>xk</declname>
+        </param>
+        <param>
+          <type>gsl_vector *</type>
+          <declname>dk</declname>
+        </param>
+        <briefdescription>
+<para>Evaluation of the output from the sigma points. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_parameter_ndim.h" line="313" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_parameter_ndim.h" bodystart="313" bodyend="360"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceukf_1_1parameter_1ad6f61f2ec81c146f20f8e7f6df052e58" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ukf::parameter::getSigmaPoints</definition>
+        <argsstring>(ukf_param &amp;p, ukf_state &amp;s, gsl_matrix *sigmaPoints)</argsstring>
+        <name>getSigmaPoints</name>
+        <param>
+          <type><ref refid="structukf_1_1parameter_1_1ukf__param" kindref="compound">ukf_param</ref> &amp;</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type><ref refid="structukf_1_1parameter_1_1ukf__state" kindref="compound">ukf_state</ref> &amp;</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>gsl_matrix *</type>
+          <declname>sigmaPoints</declname>
+        </param>
+        <briefdescription>
+<para>Returns a set of sigma points. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_parameter_ndim.h" line="365" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_parameter_ndim.h" bodystart="365" bodyend="394"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceukf_1_1parameter_1a4f5d4fb6f2a2be962a1528a40f8c9562" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ukf::parameter::ukf_scalar_init</definition>
+        <argsstring>(ukf_param &amp;p, ukf_scalar_state &amp;s)</argsstring>
+        <name>ukf_scalar_init</name>
+        <param>
+          <type><ref refid="structukf_1_1parameter_1_1ukf__param" kindref="compound">ukf_param</ref> &amp;</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type><ref refid="structukf_1_1parameter_1_1ukf__scalar__state" kindref="compound">ukf_scalar_state</ref> &amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+<para>Allocation of the vectors/matrices and initialization. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_parameter_scalar.h" line="42" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_parameter_scalar.h" bodystart="42" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceukf_1_1parameter_1a18d91f67e6de67928a223b50950ffdae" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ukf::parameter::ukf_scalar_free</definition>
+        <argsstring>(ukf_param &amp;p, ukf_scalar_state &amp;s)</argsstring>
+        <name>ukf_scalar_free</name>
+        <param>
+          <type><ref refid="structukf_1_1parameter_1_1ukf__param" kindref="compound">ukf_param</ref> &amp;</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type><ref refid="structukf_1_1parameter_1_1ukf__scalar__state" kindref="compound">ukf_scalar_state</ref> &amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+<para>Free of memory allocation. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_parameter_scalar.h" line="123" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_parameter_scalar.h" bodystart="123" bodyend="147"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceukf_1_1parameter_1ae4830e1c0b576662494d63623dcf59dc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename FunctObj</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void ukf::parameter::ukf_scalar_iterate</definition>
+        <argsstring>(ukf_param &amp;p, ukf_scalar_state &amp;s, FunctObj g, gsl_vector *xk, double dk)</argsstring>
+        <name>ukf_scalar_iterate</name>
+        <param>
+          <type><ref refid="structukf_1_1parameter_1_1ukf__param" kindref="compound">ukf_param</ref> &amp;</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type><ref refid="structukf_1_1parameter_1_1ukf__scalar__state" kindref="compound">ukf_scalar_state</ref> &amp;</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>FunctObj</type>
+          <declname>g</declname>
+        </param>
+        <param>
+          <type>gsl_vector *</type>
+          <declname>xk</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>dk</declname>
+        </param>
+        <briefdescription>
+<para>Iteration for UKF for parameter estimation, in case of a scalar output. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_parameter_scalar.h" line="154" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_parameter_scalar.h" bodystart="154" bodyend="257"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceukf_1_1parameter_1a9b3034fa2b941068c2fc0fea41cbd5fb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename FunctObj</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void ukf::parameter::ukf_scalar_evaluate</definition>
+        <argsstring>(ukf_param &amp;p, ukf_scalar_state &amp;s, FunctObj g, gsl_vector *xk, double &amp;dk)</argsstring>
+        <name>ukf_scalar_evaluate</name>
+        <param>
+          <type><ref refid="structukf_1_1parameter_1_1ukf__param" kindref="compound">ukf_param</ref> &amp;</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type><ref refid="structukf_1_1parameter_1_1ukf__scalar__state" kindref="compound">ukf_scalar_state</ref> &amp;</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>FunctObj</type>
+          <declname>g</declname>
+        </param>
+        <param>
+          <type>gsl_vector *</type>
+          <declname>xk</declname>
+        </param>
+        <param>
+          <type>double &amp;</type>
+          <declname>dk</declname>
+        </param>
+        <briefdescription>
+<para>Evaluation of the output from the sigma points. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_parameter_scalar.h" line="264" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_parameter_scalar.h" bodystart="264" bodyend="307"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>UKF for parameter estimation. The notations follow &quot;Sigma-Point Kalman Filters for Probabilistic Inference in Dynamic State-Space Models&quot;,p93, PhD, van Der Merwe. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/fix_jer/GIT/easykf/src/ukf_parameter_ndim.h" line="32" column="1"/>
+  </compounddef>
+</doxygen>

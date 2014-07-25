@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="classekf_1_1EvolutionRLS" kind="class" prot="public">
+    <compoundname>ekf::EvolutionRLS</compoundname>
+    <basecompoundref refid="classekf_1_1EvolutionNoise" prot="public" virt="non-virtual">ekf::EvolutionNoise</basecompoundref>
+    <includes refid="ekf__types_8h" local="no">ekf_types.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classekf_1_1EvolutionRLS_1a8d02ac2201763698940b521eb4e77aea" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double ekf::EvolutionRLS::_decay</definition>
+        <argsstring></argsstring>
+        <name>_decay</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ekf_types.h" line="195" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ekf_types.h" bodystart="195" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classekf_1_1EvolutionRLS_1a0b5b4cfc3d7568b49a561416776da36c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ekf::EvolutionRLS::EvolutionRLS</definition>
+        <argsstring>(double initial_value, double decay)</argsstring>
+        <name>EvolutionRLS</name>
+        <param>
+          <type>double</type>
+          <declname>initial_value</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>decay</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ekf_types.h" line="197" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ekf_types.h" bodystart="197" bodyend="201"/>
+      </memberdef>
+      <memberdef kind="function" id="classekf_1_1EvolutionRLS_1a4f5f974e4bca143207a9085e1fead375" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void ekf::EvolutionRLS::updateEvolutionNoise</definition>
+        <argsstring>(ekf_param &amp;p, ekf_state &amp;s)</argsstring>
+        <name>updateEvolutionNoise</name>
+        <reimplements refid="classekf_1_1EvolutionNoise_1aaac5a89c8474b327c8b4cf22217e220a">updateEvolutionNoise</reimplements>
+        <param>
+          <type><ref refid="structekf_1_1ekf__param" kindref="compound">ekf_param</ref> &amp;</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type><ref refid="structekf_1_1ekf__state" kindref="compound">ekf_state</ref> &amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ekf_types.h" line="203" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ekf_types.h" bodystart="203" bodyend="207"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Forgetting type evolution noise. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="14">
+        <label>ekf::EvolutionRLS</label>
+        <link refid="classekf_1_1EvolutionRLS"/>
+        <childnode refid="15" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>ekf::EvolutionNoise</label>
+        <link refid="classekf_1_1EvolutionNoise"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="16">
+        <label>ekf::EvolutionRLS</label>
+        <link refid="classekf_1_1EvolutionRLS"/>
+        <childnode refid="17" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>ekf::EvolutionNoise</label>
+        <link refid="classekf_1_1EvolutionNoise"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/fix_jer/GIT/easykf/src/ekf_types.h" line="194" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ekf_types.h" bodystart="193" bodyend="208"/>
+    <listofallmembers>
+      <member refid="classekf_1_1EvolutionRLS_1a8d02ac2201763698940b521eb4e77aea" prot="private" virt="non-virtual"><scope>ekf::EvolutionRLS</scope><name>_decay</name></member>
+      <member refid="classekf_1_1EvolutionNoise_1ab81cba204320db6f28479ab8b33ac8d8" prot="protected" virt="non-virtual"><scope>ekf::EvolutionRLS</scope><name>_initial_value</name></member>
+      <member refid="classekf_1_1EvolutionNoise_1a8db04b04e6523d58c6118f171b02ab63" prot="public" virt="non-virtual"><scope>ekf::EvolutionRLS</scope><name>EvolutionNoise</name></member>
+      <member refid="classekf_1_1EvolutionRLS_1a0b5b4cfc3d7568b49a561416776da36c" prot="public" virt="non-virtual"><scope>ekf::EvolutionRLS</scope><name>EvolutionRLS</name></member>
+      <member refid="classekf_1_1EvolutionNoise_1a9513f65f9a322f8ffcbf2c568526dd15" prot="public" virt="non-virtual"><scope>ekf::EvolutionRLS</scope><name>init</name></member>
+      <member refid="classekf_1_1EvolutionRLS_1a4f5f974e4bca143207a9085e1fead375" prot="public" virt="virtual"><scope>ekf::EvolutionRLS</scope><name>updateEvolutionNoise</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

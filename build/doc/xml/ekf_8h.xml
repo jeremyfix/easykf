@@ -1,0 +1,335 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="ekf_8h" kind="file">
+    <compoundname>ekf.h</compoundname>
+    <includes refid="ekf__types_8h" local="yes">ekf_types.h</includes>
+    <includes local="no">gsl/gsl_vector.h</includes>
+    <includes local="no">gsl/gsl_matrix.h</includes>
+    <includes local="no">gsl/gsl_blas.h</includes>
+    <includedby refid="ukf_8h" local="yes">/home/fix_jer/GIT/easykf/src/ukf.h</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>gsl/gsl_vector.h</label>
+      </node>
+      <node id="8">
+        <label>gsl/gsl_blas.h</label>
+      </node>
+      <node id="7">
+        <label>cmath</label>
+      </node>
+      <node id="6">
+        <label>cassert</label>
+      </node>
+      <node id="1">
+        <label>ekf_types.h</label>
+        <link refid="ekf__types_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>iostream</label>
+      </node>
+      <node id="0">
+        <label>/home/fix_jer/GIT/easykf/src/ekf.h</label>
+        <link refid="ekf.h"/>
+        <childnode refid="1" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>gsl/gsl_matrix.h</label>
+      </node>
+      <node id="4">
+        <label>ukf_math.h</label>
+        <link refid="ukf__math_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="10">
+        <label>/home/fix_jer/GIT/easykf/src/ukf.h</label>
+        <link refid="ukf_8h"/>
+      </node>
+      <node id="9">
+        <label>/home/fix_jer/GIT/easykf/src/ekf.h</label>
+        <link refid="ekf.h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespaceekf">ekf</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*<sp/>ekf.h</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>2011-2014<sp/>Jeremy<sp/>Fix</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>This<sp/>program<sp/>is<sp/>free<sp/>software;<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>it<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>the<sp/>Free<sp/>Software<sp/>Foundation;<sp/>either<sp/>version<sp/>3<sp/>of<sp/>the<sp/>License,<sp/>or<sp/>(at</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>your<sp/>option)<sp/>any<sp/>later<sp/>version.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>This<sp/>program<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,<sp/>but</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>WITHOUT<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>MERCHANTABILITY<sp/>or<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the<sp/>GNU</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>General<sp/>Public<sp/>License<sp/>for<sp/>more<sp/>details.</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>General<sp/>Public<sp/>License</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>along<sp/>with<sp/>this<sp/>program;<sp/>if<sp/>not,<sp/>write<sp/>to<sp/>the<sp/>Free<sp/>Software</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>Foundation,<sp/>Inc.,<sp/>51<sp/>Franklin<sp/>Street,<sp/>Fifth<sp/>Floor,<sp/>Boston,<sp/>MA<sp/>02110-1301,<sp/>USA.</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>EKF_H</highlight></codeline>
+<codeline lineno="21"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>EKF_H</highlight></codeline>
+<codeline lineno="22"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="ekf__types_8h" kindref="compound">ekf_types.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;gsl/gsl_vector.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;gsl/gsl_matrix.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;gsl/gsl_blas.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="namespaceekf" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">ekf</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="namespaceekf_1a11045811ee6b53e5676adcb4829445de" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceekf_1a11045811ee6b53e5676adcb4829445de" kindref="member">ekf_init</ref>(<ref refid="structekf_1_1ekf__param" kindref="compound">ekf_param</ref><sp/>&amp;p,<sp/><ref refid="structekf_1_1ekf__state" kindref="compound">ekf_state</ref><sp/>&amp;s)</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Matrices<sp/>for<sp/>the<sp/>state</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>s.<ref refid="structekf_1_1ekf__state_1a13fc45f72e07e8396866ae3796095282" kindref="member">xk</ref><sp/>=<sp/>gsl_vector_alloc(p.<ref refid="structekf_1_1ekf__param_1a1246cf99fd3c8a31199c74c2ebc96574" kindref="member">n</ref>);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_vector_set_zero(s.<ref refid="structekf_1_1ekf__state_1a13fc45f72e07e8396866ae3796095282" kindref="member">xk</ref>);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>s.<ref refid="structekf_1_1ekf__state_1af12586ca49febf7db7c50cd1153c9e33" kindref="member">xkm</ref><sp/>=<sp/>gsl_vector_alloc(p.<ref refid="structekf_1_1ekf__param_1a1246cf99fd3c8a31199c74c2ebc96574" kindref="member">n</ref>);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_vector_set_zero(s.<ref refid="structekf_1_1ekf__state_1af12586ca49febf7db7c50cd1153c9e33" kindref="member">xkm</ref>);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>s.<ref refid="structekf_1_1ekf__state_1ab7e6965a9cd8b85424f9a0f1aedc2fb7" kindref="member">Pxk</ref><sp/>=<sp/>gsl_matrix_alloc(p.<ref refid="structekf_1_1ekf__param_1a1246cf99fd3c8a31199c74c2ebc96574" kindref="member">n</ref>,<sp/>p.<ref refid="structekf_1_1ekf__param_1a1246cf99fd3c8a31199c74c2ebc96574" kindref="member">n</ref>);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set_zero(s.<ref refid="structekf_1_1ekf__state_1ab7e6965a9cd8b85424f9a0f1aedc2fb7" kindref="member">Pxk</ref>);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>s.<ref refid="structekf_1_1ekf__state_1aee938384595b322d411277e1dda54d2e" kindref="member">Fxk</ref><sp/>=<sp/>gsl_matrix_alloc(p.<ref refid="structekf_1_1ekf__param_1a1246cf99fd3c8a31199c74c2ebc96574" kindref="member">n</ref>,<sp/>p.<ref refid="structekf_1_1ekf__param_1a1246cf99fd3c8a31199c74c2ebc96574" kindref="member">n</ref>);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set_zero(s.<ref refid="structekf_1_1ekf__state_1aee938384595b322d411277e1dda54d2e" kindref="member">Fxk</ref>);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>s.<ref refid="structekf_1_1ekf__state_1a73bd94df09b3ffaed5e07552e1d605db" kindref="member">Rv</ref><sp/>=<sp/>gsl_matrix_alloc(p.<ref refid="structekf_1_1ekf__param_1a1246cf99fd3c8a31199c74c2ebc96574" kindref="member">n</ref>,<sp/>p.<ref refid="structekf_1_1ekf__param_1a1246cf99fd3c8a31199c74c2ebc96574" kindref="member">n</ref>);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set_zero(s.<ref refid="structekf_1_1ekf__state_1a73bd94df09b3ffaed5e07552e1d605db" kindref="member">Rv</ref>);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Matrices<sp/>for<sp/>the<sp/>observations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>s.<ref refid="structekf_1_1ekf__state_1a70ebe0b19856b1846cb3a1500478824e" kindref="member">yk</ref><sp/>=<sp/>gsl_vector_alloc(p.<ref refid="structekf_1_1ekf__param_1a1430eac7209095599a396000fc31ec8c" kindref="member">no</ref>);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_vector_set_zero(s.<ref refid="structekf_1_1ekf__state_1a70ebe0b19856b1846cb3a1500478824e" kindref="member">yk</ref>);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>s.<ref refid="structekf_1_1ekf__state_1afed1bd13d00d799ebe5e3d7d7fbb51ae" kindref="member">ino_yk</ref><sp/>=<sp/>gsl_vector_alloc(p.<ref refid="structekf_1_1ekf__param_1a1430eac7209095599a396000fc31ec8c" kindref="member">no</ref>);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_vector_set_zero(s.<ref refid="structekf_1_1ekf__state_1afed1bd13d00d799ebe5e3d7d7fbb51ae" kindref="member">ino_yk</ref>);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>s.<ref refid="structekf_1_1ekf__state_1a48db34937430d2388e89c34a454533a3" kindref="member">Hyk</ref><sp/>=<sp/>gsl_matrix_alloc(p.<ref refid="structekf_1_1ekf__param_1a1430eac7209095599a396000fc31ec8c" kindref="member">no</ref>,<sp/>p.<ref refid="structekf_1_1ekf__param_1a1246cf99fd3c8a31199c74c2ebc96574" kindref="member">n</ref>);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set_zero(s.<ref refid="structekf_1_1ekf__state_1a48db34937430d2388e89c34a454533a3" kindref="member">Hyk</ref>);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>s.<ref refid="structekf_1_1ekf__state_1ae25dcdc684b5048c1c2d692e7d0a6c04" kindref="member">Rn</ref><sp/>=<sp/>gsl_matrix_alloc(p.<ref refid="structekf_1_1ekf__param_1a1430eac7209095599a396000fc31ec8c" kindref="member">no</ref>,<sp/>p.<ref refid="structekf_1_1ekf__param_1a1430eac7209095599a396000fc31ec8c" kindref="member">no</ref>);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set_zero(s.<ref refid="structekf_1_1ekf__state_1ae25dcdc684b5048c1c2d692e7d0a6c04" kindref="member">Rn</ref>);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Matrices<sp/>for<sp/>the<sp/>kalman<sp/>gain<sp/>and<sp/>the<sp/>updates</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>s.<ref refid="structekf_1_1ekf__state_1a1c60d18be170aa3c2c5cf14964d18fc7" kindref="member">Kk</ref><sp/>=<sp/>gsl_matrix_alloc(p.<ref refid="structekf_1_1ekf__param_1a1246cf99fd3c8a31199c74c2ebc96574" kindref="member">n</ref>,<sp/>p.<ref refid="structekf_1_1ekf__param_1a1430eac7209095599a396000fc31ec8c" kindref="member">no</ref>);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set_zero(s.<ref refid="structekf_1_1ekf__state_1a1c60d18be170aa3c2c5cf14964d18fc7" kindref="member">Kk</ref>);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Temporary<sp/>matrices</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>s.<ref refid="structekf_1_1ekf__state_1afe5d2d9fddcfacbfcc6e12d309771743" kindref="member">temp_n_n</ref><sp/>=<sp/>gsl_matrix_alloc(p.<ref refid="structekf_1_1ekf__param_1a1246cf99fd3c8a31199c74c2ebc96574" kindref="member">n</ref>,<sp/>p.<ref refid="structekf_1_1ekf__param_1a1246cf99fd3c8a31199c74c2ebc96574" kindref="member">n</ref>);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set_zero(s.<ref refid="structekf_1_1ekf__state_1afe5d2d9fddcfacbfcc6e12d309771743" kindref="member">temp_n_n</ref>);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>s.<ref refid="structekf_1_1ekf__state_1a99c2af66b30729d245ba9e1195140323" kindref="member">temp_n_1</ref><sp/>=<sp/>gsl_matrix_alloc(p.<ref refid="structekf_1_1ekf__param_1a1246cf99fd3c8a31199c74c2ebc96574" kindref="member">n</ref>,<sp/>1);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set_zero(s.<ref refid="structekf_1_1ekf__state_1a99c2af66b30729d245ba9e1195140323" kindref="member">temp_n_1</ref>);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>s.<ref refid="structekf_1_1ekf__state_1a350cc6da2951c80850bcd32de6766e36" kindref="member">temp_no_no</ref><sp/>=<sp/>gsl_matrix_alloc(p.<ref refid="structekf_1_1ekf__param_1a1430eac7209095599a396000fc31ec8c" kindref="member">no</ref>,<sp/>p.<ref refid="structekf_1_1ekf__param_1a1430eac7209095599a396000fc31ec8c" kindref="member">no</ref>);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set_zero(s.<ref refid="structekf_1_1ekf__state_1a350cc6da2951c80850bcd32de6766e36" kindref="member">temp_no_no</ref>);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>s.<ref refid="structekf_1_1ekf__state_1ac7e9f6cb1df0e658941fd38ee12712f4" kindref="member">temp_n_no</ref><sp/>=<sp/>gsl_matrix_alloc(p.<ref refid="structekf_1_1ekf__param_1a1246cf99fd3c8a31199c74c2ebc96574" kindref="member">n</ref>,<sp/>p.<ref refid="structekf_1_1ekf__param_1a1430eac7209095599a396000fc31ec8c" kindref="member">no</ref>);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set_zero(s.<ref refid="structekf_1_1ekf__state_1ac7e9f6cb1df0e658941fd38ee12712f4" kindref="member">temp_n_no</ref>);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>s.<ref refid="structekf_1_1ekf__state_1a1a9bed9ae078cd39f59bf1f7336d06cf" kindref="member">temp_2_n_n</ref><sp/>=<sp/>gsl_matrix_alloc(p.<ref refid="structekf_1_1ekf__param_1a1246cf99fd3c8a31199c74c2ebc96574" kindref="member">n</ref>,<sp/>p.<ref refid="structekf_1_1ekf__param_1a1246cf99fd3c8a31199c74c2ebc96574" kindref="member">n</ref>);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set_zero(s.<ref refid="structekf_1_1ekf__state_1a1a9bed9ae078cd39f59bf1f7336d06cf" kindref="member">temp_2_n_n</ref>);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>s.<ref refid="structekf_1_1ekf__state_1ac7734ea76c5973de7f4e76ea8d8757d8" kindref="member">temp_no</ref><sp/>=<sp/>gsl_vector_alloc(p.<ref refid="structekf_1_1ekf__param_1a1430eac7209095599a396000fc31ec8c" kindref="member">no</ref>);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_vector_set_zero(s.<ref refid="structekf_1_1ekf__state_1ac7734ea76c5973de7f4e76ea8d8757d8" kindref="member">temp_no</ref>);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialize<sp/>the<sp/>noises</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//gsl_matrix_set_identity(s.Rv);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//gsl_matrix_scale(s.Rv,<sp/>p.evolution_noise);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>p.<ref refid="structekf_1_1ekf__param_1a9b71dc086b83e78c78f6258ce19fafb4" kindref="member">evolution_noise</ref>-&gt;<ref refid="classekf_1_1EvolutionNoise_1a9513f65f9a322f8ffcbf2c568526dd15" kindref="member">init</ref>(p,<sp/>s);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//printf(&quot;Evolution<sp/>noise<sp/>:<sp/>max<sp/>=<sp/>%e<sp/>,<sp/>min<sp/>=<sp/>%e<sp/>\n&quot;,<sp/>gsl_matrix_max(s.Rv),<sp/>gsl_matrix_min(s.Rv));</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set_identity(s.<ref refid="structekf_1_1ekf__state_1ae25dcdc684b5048c1c2d692e7d0a6c04" kindref="member">Rn</ref>);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_scale(s.<ref refid="structekf_1_1ekf__state_1ae25dcdc684b5048c1c2d692e7d0a6c04" kindref="member">Rn</ref>,<sp/>p.<ref refid="structekf_1_1ekf__param_1a931255569a953be75868b7ef098ff310" kindref="member">observation_noise</ref>);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialize<sp/>the<sp/>covariance<sp/>of<sp/>the<sp/>parameters</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_set_identity(s.<ref refid="structekf_1_1ekf__state_1ab7e6965a9cd8b85424f9a0f1aedc2fb7" kindref="member">Pxk</ref>);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_scale(s.<ref refid="structekf_1_1ekf__state_1ab7e6965a9cd8b85424f9a0f1aedc2fb7" kindref="member">Pxk</ref>,<sp/>p.<ref refid="structekf_1_1ekf__param_1afc3c7b95fe943c99c49e7b0c5703de68" kindref="member">prior_pk</ref>);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101" refid="namespaceekf_1ad089f09f2d932343f311b16d414c1c6b" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceekf_1ad089f09f2d932343f311b16d414c1c6b" kindref="member">ekf_free</ref>(<ref refid="structekf_1_1ekf__param" kindref="compound">ekf_param</ref><sp/>&amp;p,<sp/><ref refid="structekf_1_1ekf__state" kindref="compound">ekf_state</ref><sp/>&amp;s)</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_vector_free(s.<ref refid="structekf_1_1ekf__state_1a13fc45f72e07e8396866ae3796095282" kindref="member">xk</ref>);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_vector_free(s.<ref refid="structekf_1_1ekf__state_1af12586ca49febf7db7c50cd1153c9e33" kindref="member">xkm</ref>);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_free(s.<ref refid="structekf_1_1ekf__state_1ab7e6965a9cd8b85424f9a0f1aedc2fb7" kindref="member">Pxk</ref>);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_free(s.<ref refid="structekf_1_1ekf__state_1aee938384595b322d411277e1dda54d2e" kindref="member">Fxk</ref>);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_free(s.<ref refid="structekf_1_1ekf__state_1a73bd94df09b3ffaed5e07552e1d605db" kindref="member">Rv</ref>);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_vector_free(s.<ref refid="structekf_1_1ekf__state_1a70ebe0b19856b1846cb3a1500478824e" kindref="member">yk</ref>);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_vector_free(s.<ref refid="structekf_1_1ekf__state_1afed1bd13d00d799ebe5e3d7d7fbb51ae" kindref="member">ino_yk</ref>);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_free(s.<ref refid="structekf_1_1ekf__state_1a48db34937430d2388e89c34a454533a3" kindref="member">Hyk</ref>);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_free(s.<ref refid="structekf_1_1ekf__state_1ae25dcdc684b5048c1c2d692e7d0a6c04" kindref="member">Rn</ref>);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_free(s.<ref refid="structekf_1_1ekf__state_1a1c60d18be170aa3c2c5cf14964d18fc7" kindref="member">Kk</ref>);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_free(s.<ref refid="structekf_1_1ekf__state_1afe5d2d9fddcfacbfcc6e12d309771743" kindref="member">temp_n_n</ref>);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_free(s.<ref refid="structekf_1_1ekf__state_1a99c2af66b30729d245ba9e1195140323" kindref="member">temp_n_1</ref>);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_free(s.<ref refid="structekf_1_1ekf__state_1a350cc6da2951c80850bcd32de6766e36" kindref="member">temp_no_no</ref>);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_free(s.<ref refid="structekf_1_1ekf__state_1ac7e9f6cb1df0e658941fd38ee12712f4" kindref="member">temp_n_no</ref>);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_free(s.<ref refid="structekf_1_1ekf__state_1a1a9bed9ae078cd39f59bf1f7336d06cf" kindref="member">temp_2_n_n</ref>);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_vector_free(s.<ref refid="structekf_1_1ekf__state_1ac7734ea76c5973de7f4e76ea8d8757d8" kindref="member">temp_no</ref>);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>FunctProcess,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>JacobianProcess,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>FunctObservation,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>JacobianObservation&gt;</highlight></codeline>
+<codeline lineno="125" refid="namespaceekf_1a59a2f5e87de993d4320c6c2492ab03f1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceekf_1a59a2f5e87de993d4320c6c2492ab03f1" kindref="member">ekf_iterate</ref>(<ref refid="structekf_1_1ekf__param" kindref="compound">ekf_param</ref><sp/>&amp;p,<sp/><ref refid="structekf_1_1ekf__state" kindref="compound">ekf_state</ref><sp/>&amp;s,<sp/>FunctProcess<sp/>f,<sp/>JacobianProcess<sp/>df,<sp/>FunctObservation<sp/>h,<sp/>JacobianObservation<sp/>dh,<sp/>gsl_vector*<sp/>yk)</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/****************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*****<sp/>Prediction<sp/>step<sp/><sp/>*****/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/****************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Compute<sp/>the<sp/>Jacobian<sp/>of<sp/>the<sp/>evolution</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Eq.<sp/>2.34</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>df(s.<ref refid="structekf_1_1ekf__state_1abe2839dd3805e4dd56c613227788606f" kindref="member">params</ref>,<sp/>s.<ref refid="structekf_1_1ekf__state_1a13fc45f72e07e8396866ae3796095282" kindref="member">xk</ref>,s.<ref refid="structekf_1_1ekf__state_1aee938384595b322d411277e1dda54d2e" kindref="member">Fxk</ref>);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Compute<sp/>the<sp/>predicted<sp/>state<sp/>mean<sp/>and<sp/>covariance</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Eq.<sp/>2.36</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>s.xk<sp/>will<sp/>now<sp/>hold<sp/>the<sp/>predicted<sp/>state<sp/>!</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>f(s.<ref refid="structekf_1_1ekf__state_1abe2839dd3805e4dd56c613227788606f" kindref="member">params</ref>,<sp/>s.<ref refid="structekf_1_1ekf__state_1a13fc45f72e07e8396866ae3796095282" kindref="member">xk</ref>,<sp/>s.<ref refid="structekf_1_1ekf__state_1af12586ca49febf7db7c50cd1153c9e33" kindref="member">xkm</ref>);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Eq.<sp/>2.37</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>s.Pxk<sp/>will<sp/>now<sp/>hold<sp/>Pxk^-</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_blas_dgemm(CblasNoTrans,<sp/>CblasTrans,<sp/>1.0,<sp/>s.<ref refid="structekf_1_1ekf__state_1ab7e6965a9cd8b85424f9a0f1aedc2fb7" kindref="member">Pxk</ref>,<sp/>s.<ref refid="structekf_1_1ekf__state_1aee938384595b322d411277e1dda54d2e" kindref="member">Fxk</ref>,<sp/>0.0,<sp/>s.<ref refid="structekf_1_1ekf__state_1afe5d2d9fddcfacbfcc6e12d309771743" kindref="member">temp_n_n</ref>);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_blas_dgemm(CblasNoTrans,<sp/>CblasNoTrans,<sp/>1.0,<sp/>s.<ref refid="structekf_1_1ekf__state_1aee938384595b322d411277e1dda54d2e" kindref="member">Fxk</ref>,<sp/>s.<ref refid="structekf_1_1ekf__state_1afe5d2d9fddcfacbfcc6e12d309771743" kindref="member">temp_n_n</ref>,<sp/>0.0,<sp/>s.<ref refid="structekf_1_1ekf__state_1ab7e6965a9cd8b85424f9a0f1aedc2fb7" kindref="member">Pxk</ref>);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_add(s.<ref refid="structekf_1_1ekf__state_1ab7e6965a9cd8b85424f9a0f1aedc2fb7" kindref="member">Pxk</ref>,<sp/>s.<ref refid="structekf_1_1ekf__state_1a73bd94df09b3ffaed5e07552e1d605db" kindref="member">Rv</ref>);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/****************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*****<sp/>Correction<sp/>step<sp/><sp/>*****/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/****************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Compute<sp/>the<sp/>Jacobian<sp/>of<sp/>the<sp/>observation<sp/>model</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Eq.<sp/>2.38</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>dh(s.<ref refid="structekf_1_1ekf__state_1abe2839dd3805e4dd56c613227788606f" kindref="member">params</ref>,<sp/>s.<ref refid="structekf_1_1ekf__state_1af12586ca49febf7db7c50cd1153c9e33" kindref="member">xkm</ref>,<sp/>s.<ref refid="structekf_1_1ekf__state_1a48db34937430d2388e89c34a454533a3" kindref="member">Hyk</ref>);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!p.<ref refid="structekf_1_1ekf__param_1a8e3a67547cde4646e17689a669fb25bc" kindref="member">observation_gradient_is_diagonal</ref>)</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Update<sp/>the<sp/>estimates</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Eq<sp/>2.40</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>1<sp/>-<sp/>Compute<sp/>H.P^-.H^T<sp/>+<sp/>Rn</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gsl_blas_dgemm(CblasNoTrans,<sp/>CblasTrans,<sp/>1.0,<sp/>s.<ref refid="structekf_1_1ekf__state_1ab7e6965a9cd8b85424f9a0f1aedc2fb7" kindref="member">Pxk</ref>,<sp/>s.<ref refid="structekf_1_1ekf__state_1a48db34937430d2388e89c34a454533a3" kindref="member">Hyk</ref>,<sp/>0.0,<sp/>s.<ref refid="structekf_1_1ekf__state_1ac7e9f6cb1df0e658941fd38ee12712f4" kindref="member">temp_n_no</ref>);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gsl_blas_dgemm(CblasNoTrans,<sp/>CblasNoTrans,<sp/>1.0,<sp/>s.<ref refid="structekf_1_1ekf__state_1a48db34937430d2388e89c34a454533a3" kindref="member">Hyk</ref>,<sp/>s.<ref refid="structekf_1_1ekf__state_1ac7e9f6cb1df0e658941fd38ee12712f4" kindref="member">temp_n_no</ref>,<sp/>0.0,<sp/>s.<ref refid="structekf_1_1ekf__state_1a350cc6da2951c80850bcd32de6766e36" kindref="member">temp_no_no</ref>);</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gsl_matrix_add(s.<ref refid="structekf_1_1ekf__state_1a350cc6da2951c80850bcd32de6766e36" kindref="member">temp_no_no</ref>,<sp/>s.<ref refid="structekf_1_1ekf__state_1ae25dcdc684b5048c1c2d692e7d0a6c04" kindref="member">Rn</ref>);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>2<sp/>-<sp/>Compute<sp/>its<sp/>inverse</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gsl_linalg_cholesky_decomp(s.<ref refid="structekf_1_1ekf__state_1a350cc6da2951c80850bcd32de6766e36" kindref="member">temp_no_no</ref>);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gsl_linalg_cholesky_invert(s.<ref refid="structekf_1_1ekf__state_1a350cc6da2951c80850bcd32de6766e36" kindref="member">temp_no_no</ref>);</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>3<sp/>-<sp/>Compute<sp/>P^-.H<sp/>^T.(<sp/>H<sp/>P<sp/>H^T<sp/>+<sp/>R)^-1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gsl_blas_dgemm(CblasTrans,<sp/>CblasNoTrans,<sp/>1.0,<sp/>s.<ref refid="structekf_1_1ekf__state_1a48db34937430d2388e89c34a454533a3" kindref="member">Hyk</ref>,<sp/>s.<ref refid="structekf_1_1ekf__state_1a350cc6da2951c80850bcd32de6766e36" kindref="member">temp_no_no</ref>,<sp/>0.0,<sp/>s.<ref refid="structekf_1_1ekf__state_1ac7e9f6cb1df0e658941fd38ee12712f4" kindref="member">temp_n_no</ref>);</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gsl_blas_dgemm(CblasNoTrans,<sp/>CblasNoTrans,<sp/>1.0,<sp/>s.<ref refid="structekf_1_1ekf__state_1ab7e6965a9cd8b85424f9a0f1aedc2fb7" kindref="member">Pxk</ref>,<sp/>s.<ref refid="structekf_1_1ekf__state_1ac7e9f6cb1df0e658941fd38ee12712f4" kindref="member">temp_n_no</ref>,<sp/>0.0,<sp/>s.<ref refid="structekf_1_1ekf__state_1a1c60d18be170aa3c2c5cf14964d18fc7" kindref="member">Kk</ref>);</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>We<sp/>can<sp/>make<sp/>some<sp/>simplifications<sp/>when<sp/>computing<sp/>H<sp/>P<sp/>H^T<sp/>=<sp/>H<sp/>P<sp/>H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>and<sp/>also<sp/>when<sp/>computing<sp/>P<sp/>.<sp/>H<sp/>.<sp/>(H<sp/>P<sp/>H^T<sp/>+<sp/>R)<sp/>^-1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Update<sp/>the<sp/>estimates</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Eq<sp/>2.40</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>1<sp/>-<sp/>Compute<sp/>H.P^-.H^T<sp/>+<sp/>Rn</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0<sp/>;<sp/>i<sp/>&lt;<sp/>p.<ref refid="structekf_1_1ekf__param_1a1430eac7209095599a396000fc31ec8c" kindref="member">no</ref><sp/>;<sp/>++i)</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0<sp/>;<sp/>j<sp/>&lt;<sp/>p.<ref refid="structekf_1_1ekf__param_1a1430eac7209095599a396000fc31ec8c" kindref="member">no</ref><sp/>;<sp/>++j)</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gsl_matrix_set(s.<ref refid="structekf_1_1ekf__state_1a350cc6da2951c80850bcd32de6766e36" kindref="member">temp_no_no</ref>,<sp/>i,<sp/>j,<sp/>gsl_matrix_get(s.<ref refid="structekf_1_1ekf__state_1a48db34937430d2388e89c34a454533a3" kindref="member">Hyk</ref>,<sp/>i,<sp/>i)<sp/>*<sp/>gsl_matrix_get(s.<ref refid="structekf_1_1ekf__state_1a48db34937430d2388e89c34a454533a3" kindref="member">Hyk</ref>,<sp/>j,<sp/>j)<sp/>*<sp/>gsl_matrix_get(s.<ref refid="structekf_1_1ekf__state_1ab7e6965a9cd8b85424f9a0f1aedc2fb7" kindref="member">Pxk</ref>,<sp/>i,<sp/>j)<sp/>+<sp/>gsl_matrix_get(s.<ref refid="structekf_1_1ekf__state_1ae25dcdc684b5048c1c2d692e7d0a6c04" kindref="member">Rn</ref>,<sp/>i,<sp/>j));</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Compute<sp/>its<sp/>inverse<sp/>:<sp/>U<sp/>=<sp/>(H<sp/>P<sp/>H^T<sp/>+<sp/>R)<sp/>^-1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gsl_linalg_cholesky_decomp(s.<ref refid="structekf_1_1ekf__state_1a350cc6da2951c80850bcd32de6766e36" kindref="member">temp_no_no</ref>);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gsl_linalg_cholesky_invert(s.<ref refid="structekf_1_1ekf__state_1a350cc6da2951c80850bcd32de6766e36" kindref="member">temp_no_no</ref>);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>3<sp/>-<sp/>Compute<sp/>P^-<sp/>H^T<sp/>.<sp/>U</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Compute<sp/>H^T<sp/>.<sp/>U</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0<sp/>;<sp/>i<sp/>&lt;<sp/>p.<ref refid="structekf_1_1ekf__param_1a1430eac7209095599a396000fc31ec8c" kindref="member">no</ref>;<sp/>++i)</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0<sp/>;<sp/>j<sp/>&lt;<sp/>p.<ref refid="structekf_1_1ekf__param_1a1430eac7209095599a396000fc31ec8c" kindref="member">no</ref><sp/>;<sp/>++j)</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gsl_matrix_set(s.<ref refid="structekf_1_1ekf__state_1ac7e9f6cb1df0e658941fd38ee12712f4" kindref="member">temp_n_no</ref>,<sp/>i,<sp/>j,<sp/>gsl_matrix_get(s.<ref refid="structekf_1_1ekf__state_1a48db34937430d2388e89c34a454533a3" kindref="member">Hyk</ref>,<sp/>i,i)<sp/>*<sp/>gsl_matrix_get(s.<ref refid="structekf_1_1ekf__state_1a350cc6da2951c80850bcd32de6766e36" kindref="member">temp_no_no</ref>,<sp/>i,<sp/>j));</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>p.<ref refid="structekf_1_1ekf__param_1a1430eac7209095599a396000fc31ec8c" kindref="member">no</ref><sp/>;<sp/>i<sp/>&lt;<sp/>p.<ref refid="structekf_1_1ekf__param_1a1246cf99fd3c8a31199c74c2ebc96574" kindref="member">n</ref>;<sp/>++i)</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0<sp/>;<sp/>j<sp/>&lt;<sp/>p.<ref refid="structekf_1_1ekf__param_1a1430eac7209095599a396000fc31ec8c" kindref="member">no</ref><sp/>;<sp/>++j)</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gsl_matrix_set(s.<ref refid="structekf_1_1ekf__state_1ac7e9f6cb1df0e658941fd38ee12712f4" kindref="member">temp_n_no</ref>,<sp/>i,<sp/>j,<sp/>0.0);</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Compute<sp/>P^-<sp/>.<sp/>(H^T<sp/>.<sp/>U)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gsl_blas_dgemm(CblasNoTrans,<sp/>CblasNoTrans,<sp/>1.0,<sp/>s.<ref refid="structekf_1_1ekf__state_1ab7e6965a9cd8b85424f9a0f1aedc2fb7" kindref="member">Pxk</ref>,<sp/>s.<ref refid="structekf_1_1ekf__state_1ac7e9f6cb1df0e658941fd38ee12712f4" kindref="member">temp_n_no</ref>,<sp/>0.0,<sp/>s.<ref refid="structekf_1_1ekf__state_1a1c60d18be170aa3c2c5cf14964d18fc7" kindref="member">Kk</ref>);</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Update<sp/>the<sp/>current<sp/>estimate</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Eq<sp/>2.41</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>1<sp/>-<sp/>We<sp/>need<sp/>the<sp/>observations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/>h(s.<ref refid="structekf_1_1ekf__state_1abe2839dd3805e4dd56c613227788606f" kindref="member">params</ref>,<sp/>s.<ref refid="structekf_1_1ekf__state_1af12586ca49febf7db7c50cd1153c9e33" kindref="member">xkm</ref>,<sp/>s.<ref refid="structekf_1_1ekf__state_1a70ebe0b19856b1846cb3a1500478824e" kindref="member">yk</ref>);</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_vector_memcpy(s.<ref refid="structekf_1_1ekf__state_1afed1bd13d00d799ebe5e3d7d7fbb51ae" kindref="member">ino_yk</ref>,<sp/>yk);</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_vector_sub(s.<ref refid="structekf_1_1ekf__state_1afed1bd13d00d799ebe5e3d7d7fbb51ae" kindref="member">ino_yk</ref>,<sp/>s.<ref refid="structekf_1_1ekf__state_1a70ebe0b19856b1846cb3a1500478824e" kindref="member">yk</ref>);</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_vector_memcpy(s.<ref refid="structekf_1_1ekf__state_1a13fc45f72e07e8396866ae3796095282" kindref="member">xk</ref>,<sp/>s.<ref refid="structekf_1_1ekf__state_1af12586ca49febf7db7c50cd1153c9e33" kindref="member">xkm</ref>);</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_blas_dgemv(CblasNoTrans,<sp/>1.0,<sp/>s.<ref refid="structekf_1_1ekf__state_1a1c60d18be170aa3c2c5cf14964d18fc7" kindref="member">Kk</ref>,<sp/>s.<ref refid="structekf_1_1ekf__state_1afed1bd13d00d799ebe5e3d7d7fbb51ae" kindref="member">ino_yk</ref>,<sp/>1.0,s.<ref refid="structekf_1_1ekf__state_1a13fc45f72e07e8396866ae3796095282" kindref="member">xk</ref>);</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Update<sp/>the<sp/>variance/covariance<sp/>matrix</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Compute<sp/><sp/>-Kk<sp/>*<sp/>Hk</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!p.<ref refid="structekf_1_1ekf__param_1a8e3a67547cde4646e17689a669fb25bc" kindref="member">observation_gradient_is_diagonal</ref>)</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gsl_blas_dgemm(CblasNoTrans,<sp/>CblasNoTrans,<sp/>-1.0,<sp/>s.<ref refid="structekf_1_1ekf__state_1a1c60d18be170aa3c2c5cf14964d18fc7" kindref="member">Kk</ref>,<sp/>s.<ref refid="structekf_1_1ekf__state_1a48db34937430d2388e89c34a454533a3" kindref="member">Hyk</ref>,<sp/>0.0,<sp/>s.<ref refid="structekf_1_1ekf__state_1afe5d2d9fddcfacbfcc6e12d309771743" kindref="member">temp_n_n</ref>);</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Add<sp/>identity<sp/>:<sp/>I<sp/>-<sp/>Kk<sp/>*<sp/>Hk</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0<sp/>;<sp/>i<sp/>&lt;<sp/>p.<ref refid="structekf_1_1ekf__param_1a1246cf99fd3c8a31199c74c2ebc96574" kindref="member">n</ref><sp/>;<sp/>++i)</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gsl_matrix_set(s.<ref refid="structekf_1_1ekf__state_1afe5d2d9fddcfacbfcc6e12d309771743" kindref="member">temp_n_n</ref>,<sp/>i,<sp/>i,gsl_matrix_get(s.<ref refid="structekf_1_1ekf__state_1afe5d2d9fddcfacbfcc6e12d309771743" kindref="member">temp_n_n</ref>,i,i)<sp/>+<sp/>1.0);</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>We<sp/>can<sp/>make<sp/>some<sp/>simplifications<sp/>when<sp/>H<sp/>is<sp/>diagonal</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0<sp/>;<sp/>i<sp/>&lt;<sp/>p.<ref refid="structekf_1_1ekf__param_1a1246cf99fd3c8a31199c74c2ebc96574" kindref="member">n</ref><sp/>;<sp/>++i)</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0<sp/>;<sp/>j<sp/>&lt;<sp/>p.<ref refid="structekf_1_1ekf__param_1a1430eac7209095599a396000fc31ec8c" kindref="member">no</ref><sp/>;<sp/>++j)</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gsl_matrix_set(s.<ref refid="structekf_1_1ekf__state_1afe5d2d9fddcfacbfcc6e12d309771743" kindref="member">temp_n_n</ref>,<sp/>i,<sp/>j,<sp/>(i==j?1.0:0.0)<sp/>-<sp/>gsl_matrix_get(s.<ref refid="structekf_1_1ekf__state_1a1c60d18be170aa3c2c5cf14964d18fc7" kindref="member">Kk</ref>,<sp/>i,j)<sp/>*<sp/>gsl_matrix_get(s.<ref refid="structekf_1_1ekf__state_1a48db34937430d2388e89c34a454533a3" kindref="member">Hyk</ref>,<sp/>j,j)<sp/>);</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>p.<ref refid="structekf_1_1ekf__param_1a1430eac7209095599a396000fc31ec8c" kindref="member">no</ref><sp/>;<sp/>j<sp/>&lt;<sp/>p.<ref refid="structekf_1_1ekf__param_1a1246cf99fd3c8a31199c74c2ebc96574" kindref="member">n</ref><sp/>;<sp/>++j)</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gsl_matrix_set(s.<ref refid="structekf_1_1ekf__state_1afe5d2d9fddcfacbfcc6e12d309771743" kindref="member">temp_n_n</ref>,<sp/>i,<sp/>j,<sp/>(i<sp/>==<sp/>j<sp/>?<sp/>1.0<sp/>:<sp/>0.0));</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_blas_dgemm(CblasNoTrans,<sp/>CblasNoTrans,<sp/>1.0,<sp/>s.<ref refid="structekf_1_1ekf__state_1afe5d2d9fddcfacbfcc6e12d309771743" kindref="member">temp_n_n</ref>,<sp/>s.<ref refid="structekf_1_1ekf__state_1ab7e6965a9cd8b85424f9a0f1aedc2fb7" kindref="member">Pxk</ref>,<sp/>0.0,<sp/>s.<ref refid="structekf_1_1ekf__state_1a1a9bed9ae078cd39f59bf1f7336d06cf" kindref="member">temp_2_n_n</ref>);</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/>gsl_matrix_memcpy(s.<ref refid="structekf_1_1ekf__state_1ab7e6965a9cd8b85424f9a0f1aedc2fb7" kindref="member">Pxk</ref>,<sp/>s.<ref refid="structekf_1_1ekf__state_1a1a9bed9ae078cd39f59bf1f7336d06cf" kindref="member">temp_2_n_n</ref>);</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/***********************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*****<sp/>Evolution<sp/>noise<sp/>update<sp/><sp/>*****/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/***********************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="243"><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/>p.<ref refid="structekf_1_1ekf__param_1a9b71dc086b83e78c78f6258ce19fafb4" kindref="member">evolution_noise</ref>-&gt;<ref refid="classekf_1_1EvolutionNoise_1aaac5a89c8474b327c8b4cf22217e220a" kindref="member">updateEvolutionNoise</ref>(p,<sp/>s);</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="246"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight></codeline>
+<codeline lineno="248"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>EKF_H</highlight></codeline>
+    </programlisting>
+    <location file="/home/fix_jer/GIT/easykf/src/ekf.h"/>
+  </compounddef>
+</doxygen>

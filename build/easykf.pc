@@ -1,0 +1,6 @@
+Name: EasyKF
+Description: C++ Library for Extended, Unscented Kalman Filters
+Requires: gsl
+Version: 2.04
+Libs: -L/usr/lib -leasykf
+Cflags: -I/usr/include/easykf

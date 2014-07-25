@@ -29,6 +29,10 @@
 #define VERBOSE true
 
 using namespace ukf::parameter;
+#define NB_INPUTS 2
+#define NB_HIDDEN 2
+#define NB_OUTPUTS 1
+// We have : (NB_INPUTS + 1)*NB_HIDDEN + (NB_HIDDEN+1) * NB_OUTPUTS parameters
 
 /*****************************************************/
 /*            Definition of the MLP                  */
@@ -46,21 +50,18 @@ double my_func(gsl_vector * param, gsl_vector * input)
     double y0,y1,z;
     y0 = 0.0;
     y1 = 0.0;
-    for(int i = 0 ; i < 2 ; i++)
-    {
-        y0 += gsl_vector_get(param,i) * gsl_vector_get(input, i);
-    }
-    y0 = y0 + gsl_vector_get(param,2);
+    int i_param = 0;
+    for(int i = 0 ; i < NB_INPUTS ; i++)
+      y0 += gsl_vector_get(param,i_param++) * gsl_vector_get(input, i);
+    y0 += gsl_vector_get(param,i_param++);
     y0 = transfer(y0);
 
-    for(int i = 0 ; i < 2 ; i++)
-    {
-        y1 += gsl_vector_get(param,3+i) * gsl_vector_get(input, i);
-    }
-    y1 = y1 + gsl_vector_get(param,5);
+    for(int i = 0 ; i < NB_INPUTS ; i++)
+      y1 += gsl_vector_get(param, i_param++) * gsl_vector_get(input, i);
+    y1 += gsl_vector_get(param, i_param++);
     y1 = transfer(y1);
 
-    z = gsl_vector_get(param,6) * y0 + gsl_vector_get(param,7)*y1 + gsl_vector_get(param,8);
+    z = gsl_vector_get(param,i_param++) * y0 + gsl_vector_get(param,i_param++)*y1 + gsl_vector_get(param,i_param++);
     z = transfer(z);
 
     return z;
@@ -182,8 +183,8 @@ int main(int argc, char* argv[]) {
    {
        gsl_vector_set(xi,0,x[j]);
        gsl_vector_set(xi,1,y[j]);
-       ukf_scalar_evaluate(p, s, my_func,xi,yi);
-       //yi = my_func(s.w,xi);
+       //ukf_scalar_evaluate(p, s, my_func,xi,yi);
+       yi = my_func(s.w,xi);
        std::cout << x[j] << " ; " << y[j] << " -> " << yi << " desired : " << z[j] << std::endl;
    }
 
@@ -193,25 +194,22 @@ int main(int argc, char* argv[]) {
 
    std::cout << std::endl;
    std::cout << "Parameters : " << std::endl;
-   for(int i = 0 ; i < 2 ; i++)
-   {
-       std::cout << "x[" << i << "] -- (" << gsl_vector_get(s.w,i) << ") --> y[0] " << std::endl;
-   }
-   std::cout << "Bias y[0] : " << gsl_vector_get(s.w,2) << std::endl;
 
-   std::cout << std::endl;
-   for(int i = 0 ; i < 2 ; i++)
-   {
-       std::cout << "x[" << i << "] -- (" << gsl_vector_get(s.w,3+i) << ") --> y[1] " << std::endl;
-   }
-   std::cout << "Bias y[1] : " << gsl_vector_get(s.w,5) << std::endl;
 
-   std::cout << std::endl;
-   std::cout << "y[0] -- (" << gsl_vector_get(s.w,6) << ") --> z " << std::endl;
-   std::cout << "y[1] -- (" << gsl_vector_get(s.w,7) << ") --> z " << std::endl;
-   std::cout << "Bias z : " << gsl_vector_get(s.w,8) << std::endl;
+   int param_index = 0;
+   for(int i = 0 ; i < NB_HIDDEN ; ++i) {
+     for(int j = 0 ; j < NB_INPUTS ; ++j)
+       std::cout << "x[" << j << "] -- " << gsl_vector_get(s.w,param_index++) << " --> y[" << i << "]" << std::endl;
+     std::cout << "Bias y[" << i << "]" << gsl_vector_get(s.w,param_index++) << std::endl;
+   }
+   for(int i = 0 ; i < NB_OUTPUTS ; ++i) {
+     for(int j = 0 ; j < NB_HIDDEN ; ++j)
+       std::cout << "y[" << j << "] -- " << gsl_vector_get(s.w,param_index++) << " --> z[" << i << "]" << std::endl;
+     std::cout << "Bias z[" << i << "]" << gsl_vector_get(s.w,param_index++) << std::endl;
+   }
 
    std::cout << "########### " << std::endl;
+
 
    /***********************************************/
    /**** Generate a PPM of the classification  ****/
@@ -219,9 +217,9 @@ int main(int argc, char* argv[]) {
 
    std::cout << "Generating output image in example-001.ppm" << std::endl;
    double x_min, x_max, y_min, y_max;
-   x_min = -1.0;
+   x_min = 0.0;
    x_max = 1.0;
-   y_min = -1.0;
+   y_min = 0.0;
    y_max = 1.0;
    int N = 100;
    int color;
@@ -240,7 +238,7 @@ int main(int argc, char* argv[]) {
            // Evaluate the output as the mean of the images of the sigma points
            //ukf_scalar_evaluate(p, s, my_func,xi,yi);
            yi = my_func(s.w, xi);
-           color = int(255.0*(1.0 + yi)/2.0);
+           color = int(255.0 * yi);
            image << color << " " << color << " " << color << " " ;
          }
        image << std::endl;

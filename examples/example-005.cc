@@ -37,27 +37,30 @@ using namespace ukf::parameter;
 
 #define VERBOSE true
 #define NB_INPUTS 2
-#define NB_HIDDEN 8
+#define NB_HIDDEN 12
 #define NB_OUTPUTS 2
+//#define NB_PARAMS ((NB_INPUTS+1) * NB_HIDDEN + (NB_HIDDEN+1)* NB_OUTPUTS + 8)
+#define NB_PARAMS ((NB_INPUTS+1) * NB_HIDDEN + (NB_HIDDEN+1)* NB_OUTPUTS)
 
 /*****************************************************/
 /*            Definition of the MLP                  */
 /*****************************************************/
+/*
 double transfer(double x, double a, double b, double u , double c)
 {
     return a / (1.0 + exp(-b * (x-u)))+c;
 }
-
-/*double transfer(double x)
+*/
+double transfer(double x)
 {
     return 2.0 / (1.0 + exp(-x)) - 1.0;
-}*/
+}
 
 void my_func(gsl_vector * param, gsl_vector * input, gsl_vector * output)
 {
     double y[NB_HIDDEN];
     double z=0.0;
-
+    /*
     double a0 = gsl_vector_get(param,(NB_INPUTS+1) * NB_HIDDEN + (NB_HIDDEN+1)* NB_OUTPUTS);
     double b0 = gsl_vector_get(param,(NB_INPUTS+1) * NB_HIDDEN + (NB_HIDDEN+1)* NB_OUTPUTS+1);
     double u0 = gsl_vector_get(param,(NB_INPUTS+1) * NB_HIDDEN + (NB_HIDDEN+1)* NB_OUTPUTS+2);
@@ -67,7 +70,7 @@ void my_func(gsl_vector * param, gsl_vector * input, gsl_vector * output)
     double b1 = gsl_vector_get(param,(NB_INPUTS+1) * NB_HIDDEN + (NB_HIDDEN+1)* NB_OUTPUTS+5);
     double u1 = gsl_vector_get(param,(NB_INPUTS+1) * NB_HIDDEN + (NB_HIDDEN+1)* NB_OUTPUTS+6);
     double c1 = gsl_vector_get(param,(NB_INPUTS+1) * NB_HIDDEN + (NB_HIDDEN+1)* NB_OUTPUTS+7);
-
+    */
     for(int i = 0 ; i < NB_HIDDEN ; i++)
         y[i] = 0.0;
 
@@ -77,41 +80,29 @@ void my_func(gsl_vector * param, gsl_vector * input, gsl_vector * output)
     for(int j = 0 ; j < NB_HIDDEN ; j++)
     {
         for(int k = 0 ; k < NB_INPUTS ; k++)
-        {
-            y[j] += gsl_vector_get(param, i_param) * gsl_vector_get(input, k);
-            i_param++;
-        }
-        y[j] += gsl_vector_get(param, i_param);
-        i_param++;
-        y[j] = transfer(y[j], 1.0, 1.0, 0.0, 0.0);
-        //y[j] = transfer(y[j]);
+	  y[j] += gsl_vector_get(param, i_param++) * gsl_vector_get(input, k);
+        y[j] += gsl_vector_get(param, i_param++);
+        //y[j] = transfer(y[j], 1.0, 1.0, 0.0, 0.0);
+        y[j] = transfer(y[j]);
     }
 
     // First output
     z = 0.0;
     for(int j = 0 ; j < NB_HIDDEN ; j++)
-    {
-        z += gsl_vector_get(param,i_param) * y[j];
-        i_param++;
-    }
-    z += gsl_vector_get(param, i_param);
-    i_param++;
+        z += gsl_vector_get(param,i_param++) * y[j];
+    z += gsl_vector_get(param, i_param++);
 
-    z = transfer(z,a0,b0,u0,c0);
+    //z = transfer(z,a0,b0,u0,c0);
     //z = transfer(z);
     gsl_vector_set(output, 0, z);
 
     // Second output
     z = 0.0;
     for(int j = 0 ; j < NB_HIDDEN ; j++)
-    {
-        z += gsl_vector_get(param,i_param) * y[j];
-        i_param++;
-    }
-    z += gsl_vector_get(param, i_param);
-    i_param++;
+      z += gsl_vector_get(param,i_param++) * y[j];
+    z += gsl_vector_get(param, i_param++);
 
-    z = transfer(z,a1,b1,u1,c1);
+    //z = transfer(z,a1,b1,u1,c1);
     //z = transfer(z);
     gsl_vector_set(output, 1, z);
 
@@ -138,10 +129,10 @@ int main(int argc, char* argv[]) {
     ukf_param p;
     ukf_state s;
 
-    p.n = (NB_INPUTS+1) * NB_HIDDEN + (NB_HIDDEN+1)* NB_OUTPUTS + 8 ;
+    p.n = NB_PARAMS ;
     p.no = NB_OUTPUTS;
-    p.kpa = 3.0 - p.n;
-    p.alpha = 1e-2;
+    p.kpa = 0;//3.0 - p.n;
+    p.alpha = 1e-3;
     p.beta = 2.0;
 
     EvolutionNoise * evolution_noise = new EvolutionAnneal(1e-3,0.999, 1e-8);
@@ -173,8 +164,8 @@ int main(int argc, char* argv[]) {
     /***********************************************/
 
     std::vector< Sample > samples;
-    FILE * inputs_file = fopen ("Data/Mackay-inputs.data","r");
-    FILE * outputs_file = fopen ("Data/Mackay-outputs.data","r");
+    FILE * inputs_file = fopen ("/usr/share/easykf/Mackay-inputs.data","r");
+    FILE * outputs_file = fopen ("/usr/share/easykf/Mackay-outputs.data","r");
     char c;
 
     double mintheta=0.0;

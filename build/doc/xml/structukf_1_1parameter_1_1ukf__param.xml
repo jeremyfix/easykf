@@ -1,0 +1,183 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="structukf_1_1parameter_1_1ukf__param" kind="struct" prot="public">
+    <compoundname>ukf::parameter::ukf_param</compoundname>
+    <includes refid="ukf__types_8h" local="no">ukf_types.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structukf_1_1parameter_1_1ukf__param_1a6226f46479a98fdeb1321d49680e76ed" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double ukf::parameter::ukf_param::kpa</definition>
+        <argsstring></argsstring>
+        <name>kpa</name>
+        <briefdescription>
+<para><formula id="11">$\kappa \geq 0$</formula>, <formula id="12">$\kappa = 0$</formula> is a good choice. According to van der Merwe, its value is not critical </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="60" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1parameter_1_1ukf__param_1a41e15863dacadc709c856810fec793da" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double ukf::parameter::ukf_param::alpha</definition>
+        <argsstring></argsstring>
+        <name>alpha</name>
+        <briefdescription>
+<para><formula id="13">$0 \leq \alpha \leq 1$</formula> : &quot;Size&quot; of sigma-point distribution. Should be small if the function is strongly non-linear </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="65" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1parameter_1_1ukf__param_1a3afc7edee6fb3dd28849f2219c079b30" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double ukf::parameter::ukf_param::beta</definition>
+        <argsstring></argsstring>
+        <name>beta</name>
+        <briefdescription>
+<para>Non negative weights used to introduce knowledge about the higher order moments of the distribution. For gaussian distributions, <formula id="14">$\beta = 2$</formula> is a good choice. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="70" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1parameter_1_1ukf__param_1a989e990467f45b35957f7db9bd40a5e0" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double ukf::parameter::ukf_param::lambda</definition>
+        <argsstring></argsstring>
+        <name>lambda</name>
+        <briefdescription>
+<para><formula id="15">$\lambda = \alpha^2 (n + \kappa) - n$</formula> </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="75" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1parameter_1_1ukf__param_1a6970c2f5c4289c9fa1fe95d83b69e579" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double ukf::parameter::ukf_param::gamma</definition>
+        <argsstring></argsstring>
+        <name>gamma</name>
+        <briefdescription>
+<para><formula id="16">$\gamma = \sqrt{\lambda + n}$</formula> </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="80" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1parameter_1_1ukf__param_1a84f1c71ab2cd9fc6063790e9942637bd" prot="public" static="no" mutable="no">
+        <type><ref refid="classukf_1_1parameter_1_1EvolutionNoise" kindref="compound">EvolutionNoise</ref> *</type>
+        <definition>EvolutionNoise* ukf::parameter::ukf_param::evolution_noise</definition>
+        <argsstring></argsstring>
+        <name>evolution_noise</name>
+        <briefdescription>
+<para>Parameter used for the evolution noise. </para>        </briefdescription>
+        <detaileddescription>
+<para>Initial value of the evolution noise Evolution noise type </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="96" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1parameter_1_1ukf__param_1ade187fc4a6cf6c6e9a1fcb5cf8898985" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double ukf::parameter::ukf_param::observation_noise</definition>
+        <argsstring></argsstring>
+        <name>observation_noise</name>
+        <briefdescription>
+<para>Covariance of the observation noise. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="101" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1parameter_1_1ukf__param_1a898c9583fba45551ae39213dd2b212ba" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double ukf::parameter::ukf_param::prior_pi</definition>
+        <argsstring></argsstring>
+        <name>prior_pi</name>
+        <briefdescription>
+<para>Prior estimate of the covariance matrix. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="106" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1parameter_1_1ukf__param_1afdb1ce39c4a72e31df41314e2e4c4090" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int ukf::parameter::ukf_param::n</definition>
+        <argsstring></argsstring>
+        <name>n</name>
+        <briefdescription>
+<para>Number of parameters to estimate. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="111" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1parameter_1_1ukf__param_1adf4a8620c9c81e339861b1c8a40f8809" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int ukf::parameter::ukf_param::nbSamples</definition>
+        <argsstring></argsstring>
+        <name>nbSamples</name>
+        <briefdescription>
+<para><formula id="17">$nbSamples = (2 n + 1)$</formula> Number of sigma-points </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="116" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structukf_1_1parameter_1_1ukf__param_1a6672a2098cafbda39c6bd4946ca701ad" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int ukf::parameter::ukf_param::no</definition>
+        <argsstring></argsstring>
+        <name>no</name>
+        <briefdescription>
+<para>Dimension of the output. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="121" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Structure holding the parameters of the Unscented Kalman Filter. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="41">
+        <label>ukf::parameter::EvolutionNoise</label>
+        <link refid="classukf_1_1parameter_1_1EvolutionNoise"/>
+      </node>
+      <node id="40">
+        <label>ukf::parameter::ukf_param</label>
+        <link refid="structukf_1_1parameter_1_1ukf__param"/>
+        <childnode refid="41" relation="usage">
+          <edgelabel>evolution_noise</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="56" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="55" bodyend="123"/>
+    <listofallmembers>
+      <member refid="structukf_1_1parameter_1_1ukf__param_1a41e15863dacadc709c856810fec793da" prot="public" virt="non-virtual"><scope>ukf::parameter::ukf_param</scope><name>alpha</name></member>
+      <member refid="structukf_1_1parameter_1_1ukf__param_1a3afc7edee6fb3dd28849f2219c079b30" prot="public" virt="non-virtual"><scope>ukf::parameter::ukf_param</scope><name>beta</name></member>
+      <member refid="structukf_1_1parameter_1_1ukf__param_1a84f1c71ab2cd9fc6063790e9942637bd" prot="public" virt="non-virtual"><scope>ukf::parameter::ukf_param</scope><name>evolution_noise</name></member>
+      <member refid="structukf_1_1parameter_1_1ukf__param_1a6970c2f5c4289c9fa1fe95d83b69e579" prot="public" virt="non-virtual"><scope>ukf::parameter::ukf_param</scope><name>gamma</name></member>
+      <member refid="structukf_1_1parameter_1_1ukf__param_1a6226f46479a98fdeb1321d49680e76ed" prot="public" virt="non-virtual"><scope>ukf::parameter::ukf_param</scope><name>kpa</name></member>
+      <member refid="structukf_1_1parameter_1_1ukf__param_1a989e990467f45b35957f7db9bd40a5e0" prot="public" virt="non-virtual"><scope>ukf::parameter::ukf_param</scope><name>lambda</name></member>
+      <member refid="structukf_1_1parameter_1_1ukf__param_1afdb1ce39c4a72e31df41314e2e4c4090" prot="public" virt="non-virtual"><scope>ukf::parameter::ukf_param</scope><name>n</name></member>
+      <member refid="structukf_1_1parameter_1_1ukf__param_1adf4a8620c9c81e339861b1c8a40f8809" prot="public" virt="non-virtual"><scope>ukf::parameter::ukf_param</scope><name>nbSamples</name></member>
+      <member refid="structukf_1_1parameter_1_1ukf__param_1a6672a2098cafbda39c6bd4946ca701ad" prot="public" virt="non-virtual"><scope>ukf::parameter::ukf_param</scope><name>no</name></member>
+      <member refid="structukf_1_1parameter_1_1ukf__param_1ade187fc4a6cf6c6e9a1fcb5cf8898985" prot="public" virt="non-virtual"><scope>ukf::parameter::ukf_param</scope><name>observation_noise</name></member>
+      <member refid="structukf_1_1parameter_1_1ukf__param_1a898c9583fba45551ae39213dd2b212ba" prot="public" virt="non-virtual"><scope>ukf::parameter::ukf_param</scope><name>prior_pi</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

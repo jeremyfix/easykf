@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="classukf_1_1samples_1_1MaximumIndexes__1D" kind="class" prot="public">
+    <compoundname>ukf::samples::MaximumIndexes_1D</compoundname>
+    <includes refid="ukf__samples_8h" local="no">ukf_samples.h</includes>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classukf_1_1samples_1_1MaximumIndexes__1D_1a444039c203c3c2b24386ec1070afe7ce" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void ukf::samples::MaximumIndexes_1D::generateSample</definition>
+        <argsstring>(gsl_vector *v, gsl_vector *indexes_samples, unsigned int nb_samples)</argsstring>
+        <name>generateSample</name>
+        <param>
+          <type>gsl_vector *</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type>gsl_vector *</type>
+          <declname>indexes_samples</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>nb_samples</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_samples.h" line="110" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_samples.h" bodystart="110" bodyend="128"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Extract the indexes of the nb_samples highest values of a vector Be carefull, this function is extracting the indexes as, the way it is used, it doesn&apos;t not to which sample a vector index corresponds. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/fix_jer/GIT/easykf/src/ukf_samples.h" line="108" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_samples.h" bodystart="107" bodyend="129"/>
+    <listofallmembers>
+      <member refid="classukf_1_1samples_1_1MaximumIndexes__1D_1a444039c203c3c2b24386ec1070afe7ce" prot="public" virt="non-virtual"><scope>ukf::samples::MaximumIndexes_1D</scope><name>generateSample</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

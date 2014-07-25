@@ -216,6 +216,29 @@ int main(int argc, char* argv[]) {
    }
 
    /***********************************************/
+   /****     Display the learned parameters    ****/
+   /***********************************************/
+
+   std::cout << std::endl;
+   std::cout << "Parameters : " << std::endl;
+
+
+   int param_index = 0;
+   for(int i = 0 ; i < NB_HIDDEN ; ++i) {
+     for(int j = 0 ; j < NB_INPUTS ; ++j)
+       std::cout << "x[" << j << "] -- " << gsl_vector_get(s.w,param_index++) << " --> y[" << i << "]" << std::endl;
+     std::cout << "Bias y[" << i << "]" << gsl_vector_get(s.w,param_index++) << std::endl;
+   }
+   for(int i = 0 ; i < NB_OUTPUTS ; ++i) {
+     for(int j = 0 ; j < NB_HIDDEN ; ++j)
+       std::cout << "y[" << j << "] -- " << gsl_vector_get(s.w,param_index++) << " --> z[" << i << "]" << std::endl;
+     std::cout << "Bias z[" << i << "]" << gsl_vector_get(s.w,param_index++) << std::endl;
+   }
+
+   std::cout << "########### " << std::endl;
+
+
+   /***********************************************/
    /****            Free the memory            ****/
    /***********************************************/
    ukf_free(p,s);

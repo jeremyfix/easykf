@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="namespaceukf" kind="namespace">
+    <compoundname>ukf</compoundname>
+    <innernamespace refid="namespaceukf_1_1math">ukf::math</innernamespace>
+    <innernamespace refid="namespaceukf_1_1parameter">ukf::parameter</innernamespace>
+    <innernamespace refid="namespaceukf_1_1samples">ukf::samples</innernamespace>
+    <innernamespace refid="namespaceukf_1_1srstate">ukf::srstate</innernamespace>
+    <innernamespace refid="namespaceukf_1_1state">ukf::state</innernamespace>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespaceukf_1a7f64aeb620f9ab22857c499e80db46ac" prot="public" static="no">
+        <name>ProcessNoise</name>
+        <enumvalue id="namespaceukf_1a7f64aeb620f9ab22857c499e80db46aca17ae6619707ee6def4c7b41e7502a270" prot="public">
+          <name>UKF_PROCESS_FIXED</name>
+          <briefdescription>
+<para>The covariance of the evolution noise is fixed to <formula id="9">$\textbf{P}_{\theta\theta_i} = \alpha . \textbf{I}$</formula>. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceukf_1a7f64aeb620f9ab22857c499e80db46acab64d3a664525ca6b963f20162ed6f1bd" prot="public">
+          <name>UKF_PROCESS_RLS</name>
+          <briefdescription>
+<para>The covariance of the evolution noise is defined as <formula id="10">$\textbf{P}_{\theta\theta_i} = (\alpha^{-1} - 1)\textbf{P}_i$</formula>. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>The different types of implemented process noise for UKF state estimation. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="37" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="36" bodyend="46"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>In this section we implement the Unscented Kalman Filter for parameter estimation and Joint UKF involving the Scaled Unscented Transform detailed in Van der Merwe PhD Thesis. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/fix_jer/GIT/easykf/src/ukf.h" line="192" column="1"/>
+  </compounddef>
+</doxygen>

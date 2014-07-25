@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="classukf_1_1parameter_1_1EvolutionNoise" kind="class" prot="public" abstract="yes">
+    <compoundname>ukf::parameter::EvolutionNoise</compoundname>
+    <derivedcompoundref refid="classukf_1_1parameter_1_1EvolutionAnneal" prot="public" virt="non-virtual">ukf::parameter::EvolutionAnneal</derivedcompoundref>
+    <derivedcompoundref refid="classukf_1_1parameter_1_1EvolutionRLS" prot="public" virt="non-virtual">ukf::parameter::EvolutionRLS</derivedcompoundref>
+    <derivedcompoundref refid="classukf_1_1parameter_1_1EvolutionRobbinsMonro" prot="public" virt="non-virtual">ukf::parameter::EvolutionRobbinsMonro</derivedcompoundref>
+    <includes refid="ukf__types_8h" local="no">ukf_types.h</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classukf_1_1parameter_1_1EvolutionNoise_1ae59de01434a85feb7e798bca6d917573" prot="protected" static="no" mutable="no">
+        <type>double</type>
+        <definition>double ukf::parameter::EvolutionNoise::_initial_value</definition>
+        <argsstring></argsstring>
+        <name>_initial_value</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="392" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="392" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classukf_1_1parameter_1_1EvolutionNoise_1a77613e17c16df09a30e11690c05d2463" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ukf::parameter::EvolutionNoise::EvolutionNoise</definition>
+        <argsstring>(double initial_value)</argsstring>
+        <name>EvolutionNoise</name>
+        <param>
+          <type>double</type>
+          <declname>initial_value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="394" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="394" bodyend="394"/>
+      </memberdef>
+      <memberdef kind="function" id="classukf_1_1parameter_1_1EvolutionNoise_1a2a855aa21905c741e7a97661d06d692b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ukf::parameter::EvolutionNoise::init</definition>
+        <argsstring>(ukf_param &amp;p, ukf_state &amp;s)</argsstring>
+        <name>init</name>
+        <param>
+          <type><ref refid="structukf_1_1parameter_1_1ukf__param" kindref="compound">ukf_param</ref> &amp;</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type><ref refid="structukf_1_1parameter_1_1ukf__state" kindref="compound">ukf_state</ref> &amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="395" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="395" bodyend="399"/>
+      </memberdef>
+      <memberdef kind="function" id="classukf_1_1parameter_1_1EvolutionNoise_1a5bd07a11a7e36db29fed88f25895a5dc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ukf::parameter::EvolutionNoise::init</definition>
+        <argsstring>(ukf_param &amp;p, ukf_scalar_state &amp;s)</argsstring>
+        <name>init</name>
+        <param>
+          <type><ref refid="structukf_1_1parameter_1_1ukf__param" kindref="compound">ukf_param</ref> &amp;</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type><ref refid="structukf_1_1parameter_1_1ukf__scalar__state" kindref="compound">ukf_scalar_state</ref> &amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="400" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="400" bodyend="404"/>
+      </memberdef>
+      <memberdef kind="function" id="classukf_1_1parameter_1_1EvolutionNoise_1a0e8cfcc123ead6c1621b47763065740e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ukf::parameter::EvolutionNoise::updateEvolutionNoise</definition>
+        <argsstring>(ukf_param &amp;p, ukf_state &amp;s)=0</argsstring>
+        <name>updateEvolutionNoise</name>
+        <reimplementedby refid="classukf_1_1parameter_1_1EvolutionAnneal_1af855cb2554215817134e7395eafdda0b">updateEvolutionNoise</reimplementedby>
+        <reimplementedby refid="classukf_1_1parameter_1_1EvolutionRLS_1a35d647dc8e788825888e392a21c58cea">updateEvolutionNoise</reimplementedby>
+        <reimplementedby refid="classukf_1_1parameter_1_1EvolutionRobbinsMonro_1a679b8d8ede324e08cfe44619ae8b546d">updateEvolutionNoise</reimplementedby>
+        <param>
+          <type><ref refid="structukf_1_1parameter_1_1ukf__param" kindref="compound">ukf_param</ref> &amp;</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type><ref refid="structukf_1_1parameter_1_1ukf__state" kindref="compound">ukf_state</ref> &amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="406" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classukf_1_1parameter_1_1EvolutionNoise_1a110465590e3f483502ed75d07a576edb" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ukf::parameter::EvolutionNoise::updateEvolutionNoise</definition>
+        <argsstring>(ukf_param &amp;p, ukf_scalar_state &amp;s)=0</argsstring>
+        <name>updateEvolutionNoise</name>
+        <reimplementedby refid="classukf_1_1parameter_1_1EvolutionAnneal_1aa059c2215085208239b5f3c857bf5012">updateEvolutionNoise</reimplementedby>
+        <reimplementedby refid="classukf_1_1parameter_1_1EvolutionRLS_1a2a98ada5440cdd1f68c9140e3ecef219">updateEvolutionNoise</reimplementedby>
+        <reimplementedby refid="classukf_1_1parameter_1_1EvolutionRobbinsMonro_1acc4523dfedf1faf75b49512b9574e8f7">updateEvolutionNoise</reimplementedby>
+        <param>
+          <type><ref refid="structukf_1_1parameter_1_1ukf__param" kindref="compound">ukf_param</ref> &amp;</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type><ref refid="structukf_1_1parameter_1_1ukf__scalar__state" kindref="compound">ukf_scalar_state</ref> &amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="407" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Mother class from which the evolution noises inherit. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="27">
+        <label>ukf::parameter::EvolutionAnneal</label>
+        <link refid="classukf_1_1parameter_1_1EvolutionAnneal"/>
+        <childnode refid="26" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>ukf::parameter::EvolutionRLS</label>
+        <link refid="classukf_1_1parameter_1_1EvolutionRLS"/>
+        <childnode refid="26" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>ukf::parameter::EvolutionNoise</label>
+        <link refid="classukf_1_1parameter_1_1EvolutionNoise"/>
+      </node>
+      <node id="29">
+        <label>ukf::parameter::EvolutionRobbinsMonro</label>
+        <link refid="classukf_1_1parameter_1_1EvolutionRobbinsMonro"/>
+        <childnode refid="26" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="/home/fix_jer/GIT/easykf/src/ukf_types.h" line="390" column="1" bodyfile="/home/fix_jer/GIT/easykf/src/ukf_types.h" bodystart="389" bodyend="408"/>
+    <listofallmembers>
+      <member refid="classukf_1_1parameter_1_1EvolutionNoise_1ae59de01434a85feb7e798bca6d917573" prot="protected" virt="non-virtual"><scope>ukf::parameter::EvolutionNoise</scope><name>_initial_value</name></member>
+      <member refid="classukf_1_1parameter_1_1EvolutionNoise_1a77613e17c16df09a30e11690c05d2463" prot="public" virt="non-virtual"><scope>ukf::parameter::EvolutionNoise</scope><name>EvolutionNoise</name></member>
+      <member refid="classukf_1_1parameter_1_1EvolutionNoise_1a2a855aa21905c741e7a97661d06d692b" prot="public" virt="non-virtual"><scope>ukf::parameter::EvolutionNoise</scope><name>init</name></member>
+      <member refid="classukf_1_1parameter_1_1EvolutionNoise_1a5bd07a11a7e36db29fed88f25895a5dc" prot="public" virt="non-virtual"><scope>ukf::parameter::EvolutionNoise</scope><name>init</name></member>
+      <member refid="classukf_1_1parameter_1_1EvolutionNoise_1a0e8cfcc123ead6c1621b47763065740e" prot="public" virt="pure-virtual"><scope>ukf::parameter::EvolutionNoise</scope><name>updateEvolutionNoise</name></member>
+      <member refid="classukf_1_1parameter_1_1EvolutionNoise_1a110465590e3f483502ed75d07a576edb" prot="public" virt="pure-virtual"><scope>ukf::parameter::EvolutionNoise</scope><name>updateEvolutionNoise</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

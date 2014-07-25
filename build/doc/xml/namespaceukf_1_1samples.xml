@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="namespaceukf_1_1samples" kind="namespace">
+    <compoundname>ukf::samples</compoundname>
+    <innerclass refid="classukf_1_1samples_1_1RandomSample__1D" prot="public">ukf::samples::RandomSample_1D</innerclass>
+    <innerclass refid="classukf_1_1samples_1_1RandomSample__2D" prot="public">ukf::samples::RandomSample_2D</innerclass>
+    <innerclass refid="classukf_1_1samples_1_1RandomSample__3D" prot="public">ukf::samples::RandomSample_3D</innerclass>
+    <innerclass refid="classukf_1_1samples_1_1MaximumIndexes__1D" prot="public">ukf::samples::MaximumIndexes_1D</innerclass>
+    <innerclass refid="classukf_1_1samples_1_1MaximumIndexes__2D" prot="public">ukf::samples::MaximumIndexes_2D</innerclass>
+    <innerclass refid="classukf_1_1samples_1_1DistributionSample__1D" prot="public">ukf::samples::DistributionSample_1D</innerclass>
+    <innerclass refid="classukf_1_1samples_1_1DistributionSample__2D" prot="public">ukf::samples::DistributionSample_2D</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/fix_jer/GIT/easykf/src/ukf_samples.h" line="37" column="1"/>
+  </compounddef>
+</doxygen>
