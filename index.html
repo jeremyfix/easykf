@@ -112,7 +112,10 @@ Bias z[0]-9.36956
 
 	    <h3>Example-005: Mackay robot arm data with a 2-12-2 MLP</h3>
 	  <p>
-	    In this example, we learn the two outputs (x,y) from the inputs (theta, phi) of the Mackay-robot arm dataset. For this we train a 2-12-2 MLP with a parametrized sigmoidal transfer function.
+	    In this example, we learn the two outputs (x,y) from the inputs (theta, phi) of the Mackay-robot arm dataset. For this we train a 2-20-2 MLP with a parametrized sigmoidal transfer function. This is the example used in "The Unscented Kalman Filter for Nonlinear Estimation", Wan, vanderMerwe 2000. But the example in the library does not reach the performance they show in the paper. We hardly get a RMS lower than 7.1e-2. In their paper, they used a 2-12-2 MLP while I tried with a 2-20-2 but the results are similar. Below are plotted the two learned components.
+<img src="images/example-005-y1.png"/><br/>
+<img src="images/example-005-y2.png"/><br/>
+
 	  </p>
 
 	    <h3>Example-006: Minimizing the Rosenbrock function with UKF</h3>
