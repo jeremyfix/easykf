@@ -52,29 +52,28 @@
 	    There are several examples provided with the library.
 	    <h3>Example-001: XOR with a 2-2-1 MLP using UKF</h3>
 	  <p>
-	    In this example, we learn the parameters of a 2-2-MLP for solving the XOR classification problem. Running (maybe several times if falling on a local minima) example-001-xor, you should get the following classification :<br/>
+	    In this example, we learn the parameters of a 2-2-MLP with a sigmoid 1/(1.0 + exp(-x)) at all the layers (even the output indeed) for solving the XOR classification problem. Running (maybe several times if falling on a local minima) example-001-xor, you should get the following classification :<br/>
 	    <img src="images/example-001.png"/><br/>
 	    An example set of learned parameters is :
 
 	    <pre><code>
-	x[0] – (9.89157) –> y[0]
-	x[1] – (4.18644) –> y[0]
-	Bias y[0] : 8.22042
-
-	x[0] – (10.7715) –> y[1]
-	x[1] – (4.18047) –> y[1]
-	Bias y[1] : -8.70185
-
-	y[0] – (6.9837) –> z
-	y[1] – (-6.83324) –> z
-	Bias z : -3.89682
+Parameters : 
+x[0] -- -7.63941 --> y[0]
+x[1] -- -7.6247 --> y[0]
+Bias y[0]11.3754
+x[0] -- -10.2464 --> y[1]
+x[1] -- -10.2134 --> y[1]
+Bias y[1]4.44217
+y[0] -- 19.1971 --> z[0]
+y[1] -- -19.3529 --> z[0]
+Bias z[0]-9.36956
 </pre></code>
 	The transfer function is a sigmoid.
 	  </p>
 
 	    <h3>Example-002: Extended XOR with a 2-12-1 MLP using UKF</h3>
 	  <p>
-	    Here we use a 2-12-1 MLP, with a sigmoidal transfer function, to learn the extended XOR problem. The transfer function is a sigmoid. The classification should look like this:<br/>
+	    Here we use a 2-12-1 MLP, with a sigmoidal transfer function 2/(1.0 +exp(-x)) - 1 at all the layers, to learn the extended XOR problem. The transfer function is a sigmoid. The classification should look like this:<br/>
 	    <img src="images/example-002.png"/><br/>
 	  </p>
 	  
@@ -89,7 +88,27 @@
 	    <h3>Example-004: MLP with multiple output UKF</h3>
 	  <p>
 	    We use a 2-2-3 MLP to learn the three boolean functions XOR, AND and OR using the Uscented Kalman Filter with vectorial output.
-	  </p>
+	    An example set of learned parameters is :
+
+	    <pre><code>
+		Parameters : 
+		x[0] -- -4.2535 --> y[0]
+    x[1] -- -4.25286 --> y[0]
+    Bias y[0]-3.77884
+    x[0] -- -4.26442 --> y[1]
+    x[1] -- -4.26469 --> y[1]
+    Bias y[1]3.89069
+    y[0] -- -8.37178 --> z[0]
+    y[1] -- 8.39086 --> z[0]
+    Bias z[0]-7.78006
+    y[0] -- -4.59274 --> z[1]
+    y[1] -- -8.35947 --> z[1]
+    Bias z[1]-4.74863
+    y[0] -- -8.50859 --> z[2]
+    y[1] -- -1.30622 --> z[2]
+    Bias z[2]1.62141
+</pre></code>
+</p>
 
 	    <h3>Example-005: Mackay robot arm data with a 2-12-2 MLP</h3>
 	  <p>
