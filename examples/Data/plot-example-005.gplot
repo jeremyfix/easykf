@@ -1,6 +1,6 @@
 set terminal postscript color
-set output "Output/example-005-y1.ps"
-splot '< paste Data/Mackay-inputs.data Data/Mackay-outputs.data Output/example-005.data' using 1:2:3, '< paste Data/Mackay-inputs.data Data/Mackay-outputs.data Output/example-005.data' using 1:2:5
+set output "example-005-y1.ps"
+splot '< paste /usr/share/easykf/Mackay-inputs.data /usr/share/easykf/Mackay-outputs.data example-005.data' using 1:2:3 notitle, '< paste /usr/share/easykf/Mackay-inputs.data /usr/share/easykf/Mackay-outputs.data example-005.data' using 1:2:5 notitle
 
-set output "Output/example-005-y2.ps"
-splot '< paste Data/Mackay-inputs.data Data/Mackay-outputs.data Output/example-005.data' using 1:2:4, '< paste Data/Mackay-inputs.data Data/Mackay-outputs.data Output/example-005.data' using 1:2:6
+set output "example-005-y2.ps"
+splot '< paste /usr/share/easykf/Mackay-inputs.data /usr/share/easykf/Mackay-outputs.data example-005.data' using 1:2:4 notitle, '< paste /usr/share/easykf/Mackay-inputs.data /usr/share/easykf/Mackay-outputs.data example-005.data' using 1:2:6 notitle

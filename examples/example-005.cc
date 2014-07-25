@@ -37,20 +37,14 @@ using namespace ukf::parameter;
 
 #define VERBOSE true
 #define NB_INPUTS 2
-#define NB_HIDDEN 12
+#define NB_HIDDEN 20
 #define NB_OUTPUTS 2
-//#define NB_PARAMS ((NB_INPUTS+1) * NB_HIDDEN + (NB_HIDDEN+1)* NB_OUTPUTS + 8)
 #define NB_PARAMS ((NB_INPUTS+1) * NB_HIDDEN + (NB_HIDDEN+1)* NB_OUTPUTS)
 
 /*****************************************************/
 /*            Definition of the MLP                  */
 /*****************************************************/
-/*
-double transfer(double x, double a, double b, double u , double c)
-{
-    return a / (1.0 + exp(-b * (x-u)))+c;
-}
-*/
+
 double transfer(double x)
 {
     return 2.0 / (1.0 + exp(-x)) - 1.0;
@@ -60,17 +54,7 @@ void my_func(gsl_vector * param, gsl_vector * input, gsl_vector * output)
 {
     double y[NB_HIDDEN];
     double z=0.0;
-    /*
-    double a0 = gsl_vector_get(param,(NB_INPUTS+1) * NB_HIDDEN + (NB_HIDDEN+1)* NB_OUTPUTS);
-    double b0 = gsl_vector_get(param,(NB_INPUTS+1) * NB_HIDDEN + (NB_HIDDEN+1)* NB_OUTPUTS+1);
-    double u0 = gsl_vector_get(param,(NB_INPUTS+1) * NB_HIDDEN + (NB_HIDDEN+1)* NB_OUTPUTS+2);
-    double c0 = gsl_vector_get(param,(NB_INPUTS+1) * NB_HIDDEN + (NB_HIDDEN+1)* NB_OUTPUTS+3);
 
-    double a1 = gsl_vector_get(param,(NB_INPUTS+1) * NB_HIDDEN + (NB_HIDDEN+1)* NB_OUTPUTS+4);
-    double b1 = gsl_vector_get(param,(NB_INPUTS+1) * NB_HIDDEN + (NB_HIDDEN+1)* NB_OUTPUTS+5);
-    double u1 = gsl_vector_get(param,(NB_INPUTS+1) * NB_HIDDEN + (NB_HIDDEN+1)* NB_OUTPUTS+6);
-    double c1 = gsl_vector_get(param,(NB_INPUTS+1) * NB_HIDDEN + (NB_HIDDEN+1)* NB_OUTPUTS+7);
-    */
     for(int i = 0 ; i < NB_HIDDEN ; i++)
         y[i] = 0.0;
 
@@ -82,7 +66,6 @@ void my_func(gsl_vector * param, gsl_vector * input, gsl_vector * output)
         for(int k = 0 ; k < NB_INPUTS ; k++)
 	  y[j] += gsl_vector_get(param, i_param++) * gsl_vector_get(input, k);
         y[j] += gsl_vector_get(param, i_param++);
-        //y[j] = transfer(y[j], 1.0, 1.0, 0.0, 0.0);
         y[j] = transfer(y[j]);
     }
 
@@ -92,8 +75,6 @@ void my_func(gsl_vector * param, gsl_vector * input, gsl_vector * output)
         z += gsl_vector_get(param,i_param++) * y[j];
     z += gsl_vector_get(param, i_param++);
 
-    //z = transfer(z,a0,b0,u0,c0);
-    //z = transfer(z);
     gsl_vector_set(output, 0, z);
 
     // Second output
@@ -102,8 +83,6 @@ void my_func(gsl_vector * param, gsl_vector * input, gsl_vector * output)
       z += gsl_vector_get(param,i_param++) * y[j];
     z += gsl_vector_get(param, i_param++);
 
-    //z = transfer(z,a1,b1,u1,c1);
-    //z = transfer(z);
     gsl_vector_set(output, 1, z);
 
 }
@@ -156,7 +135,7 @@ int main(int argc, char* argv[]) {
 
     // Define some limit conditions for the learning
     double errorBound = 8e-3;
-    int nbStepsLimit = 1000;
+    int nbStepsLimit = 100;
     double error = 2*errorBound;;
 
     /***********************************************/
