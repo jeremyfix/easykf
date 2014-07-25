@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/example-004.dir/example-004.cc.o  -o example-004 -rdynamic ../src/libeasykf.so -L/usr/lib -lgsl -lgslcblas -lm -Wl,-rpath,/home/fix_jer/GIT/easykf/build/src 
