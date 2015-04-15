@@ -1,21 +1,25 @@
-/* ukf_parameter_ndim.h
- * 
- * Copyright (C) 2011-2014 Jeremy Fix
- * 
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 3 of the License, or (at
- * your option) any later version.
- * 
- * This program is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
- */
+/* Copyright (c) 2011-2012, Jérémy Fix. All rights reserved. */
+
+/* Redistribution and use in source and binary forms, with or without */
+/* modification, are permitted provided that the following conditions are met: */
+
+/* * Redistributions of source code must retain the above copyright notice, */
+/* this list of conditions and the following disclaimer. */
+/* * Redistributions in binary form must reproduce the above copyright notice, */
+/* this list of conditions and the following disclaimer in the documentation */
+/* and/or other materials provided with the distribution. */
+/* * None of the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission. */
+
+/* THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS "AS IS" AND */
+/* ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED */
+/* WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE */
+/* DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE */
+/* FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL */
+/* DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR */
+/* SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER */
+/* CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, */
+/* OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE */
+/* OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
 
 #ifndef UKF_PARAMETER_NDIM_H
 #define UKF_PARAMETER_NDIM_H
@@ -35,7 +39,7 @@ namespace ukf
           * @short Allocation of the vectors/matrices and initialization
           *
           */
-        inline void ukf_init(ukf_param &p, ukf_state &s)
+        void ukf_init(ukf_param &p, ukf_state &s)
         {
             // Init the lambda
             p.lambda = p.alpha * p.alpha * (p.n + p.kpa) - p.n;
@@ -127,7 +131,7 @@ namespace ukf
           * @short Free of memory allocation
           *
           */
-        inline void ukf_free(ukf_param &p, ukf_state &s)
+        void ukf_free(ukf_param &p, ukf_state &s)
         {
             gsl_matrix_free(s.Kk);
             gsl_matrix_free(s.Kk_T);
@@ -169,8 +173,9 @@ namespace ukf
           * @short Iteration for the statistical linearization
           *
           */
-        template <typename FunctObj>
-                inline void ukf_iterate(ukf_param &p, ukf_state &s, FunctObj g, gsl_vector * xk, gsl_vector* dk)
+	void ukf_iterate(ukf_param &p, ukf_state &s, 
+			 void(*g)(gsl_vector*, gsl_vector*, gsl_vector*), 
+			 gsl_vector * xk, gsl_vector* dk)
         {
 
             // Here, we implement the UKF for parameter estimation in the vectorial case
@@ -309,8 +314,9 @@ namespace ukf
           * @short Evaluation of the output from the sigma points
           *
           */
-        template <typename FunctObj>
-                inline void ukf_evaluate(ukf_param &p, ukf_state &s, FunctObj g, gsl_vector * xk, gsl_vector * dk)
+      void ukf_evaluate(ukf_param &p, ukf_state &s, 
+			void(*g)(gsl_vector*, gsl_vector*, gsl_vector*), 
+			gsl_vector * xk, gsl_vector * dk)
         {
             // ************************************************** //
             // ************ Compute the sigma points ************ //

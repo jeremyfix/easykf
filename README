@@ -1,0 +1,26 @@
+===============================================================================
+                             EasyKF : C++ Kalman Filter library
+                                 (c) Jeremy Fix 2011-2012
+===============================================================================
+
+EasyKF is a C++ library implementing the Extended Kalman Filter as well as the Unscented Kalman Filter. It is provided with several examples. Since easykf-2.1, Python bindings are provided.
+
+I/ Installation
+---------------
+
+Please read INSTALL.
+
+II/ Documentation
+-----------------
+
+The documentation is available from the doc/ directory.
+The doxygen documentation is also available online on the github repository.
+
+III/ How to contribute
+----------------------
+
+The library contains so far :
+- Extended Kalman filter
+- Unscented Kalman filter both for state/parameter estimation
+
+The optimized version of the filters (e.g. Square Root UKF) are not implemented and would be a great contribution.
