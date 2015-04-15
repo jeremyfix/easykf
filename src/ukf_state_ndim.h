@@ -198,9 +198,11 @@ namespace ukf
      * @short UKF-additive (zero-mean) noise case, "Kalman Filtering and Neural Networks", p.233
      *
      */
+    template<typename FFUNC, 
+      typename HFUNC>
     void ukf_iterate(ukf_param &p, ukf_state &s, 
-		     void (*f)(gsl_vector *, gsl_vector *, gsl_vector *),
-		     void (*h)(gsl_vector *, gsl_vector *), 
+		     FFUNC f,
+		     HFUNC h, 
 		     gsl_vector* yi)
     {
       int i,j,k;

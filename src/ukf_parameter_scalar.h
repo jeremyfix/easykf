@@ -155,8 +155,9 @@ namespace ukf
          * @short Iteration for UKF for parameter estimation, in case of a scalar output
          *
          */
-        inline void ukf_scalar_iterate(ukf_param &p, ukf_scalar_state &s, 
-				       double(*g)(gsl_vector*, gsl_vector*), 
+	template<typename GFUNC>
+        void ukf_scalar_iterate(ukf_param &p, ukf_scalar_state &s, 
+				       GFUNC g, 
 				       gsl_vector * xk, double dk)
         {
             // Here, we implement the UKF for parameter estimation in the scalar case

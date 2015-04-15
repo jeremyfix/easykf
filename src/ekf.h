@@ -124,12 +124,13 @@ namespace ekf
     gsl_matrix_free(s.temp_2_n_n);
     gsl_vector_free(s.temp_no);
   }
-
+  template<typename FFunc,
+    typename DFFunc,
+    typename HFunc,
+    typename DHFunc>
     void ekf_iterate(ekf_param &p, ekf_state &s, 
-		     void(*f)(gsl_vector*, gsl_vector*, gsl_vector*), 
-		     void(*df)(gsl_vector*, gsl_vector*, gsl_matrix*), 
-		     void(*h)(gsl_vector*, gsl_vector*, gsl_vector*), 
-		     void(*dh)(gsl_vector*, gsl_vector*, gsl_matrix*), 
+		     FFunc f, DFFunc df,
+		     HFunc h, DHFunc dh,
 		     gsl_vector* yk)
   {
     /****************************/

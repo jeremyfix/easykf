@@ -173,8 +173,9 @@ namespace ukf
           * @short Iteration for the statistical linearization
           *
           */
+	template<typename GFUNC>
 	void ukf_iterate(ukf_param &p, ukf_state &s, 
-			 void(*g)(gsl_vector*, gsl_vector*, gsl_vector*), 
+			 GFUNC g, 
 			 gsl_vector * xk, gsl_vector* dk)
         {
 
